@@ -1,5 +1,5 @@
 all:
-	gprbuild
+	gprbuild  -P hello_distributed_logger.gpr -j0
 
 generate:
 	-@rm -rf .gen src.dlada/gen
