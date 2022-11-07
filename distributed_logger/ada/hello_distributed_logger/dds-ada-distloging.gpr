@@ -1,0 +1,27 @@
+with "dds.gpr";
+with "dds-ada.gpr";
+with "dds-c-distloging.gpr";
+library project DDS.Ada.distloging is
+
+   for Library_Dir use "lib";
+   for Library_Name use "rtidlada";
+   for Source_Dirs use ("src.dlada/**");
+   for Object_Dir use ".obj/" & project'name & "/" & DDS.Library_Kind &  "/" & DDS.Build;
+
+   case DDS.Library_Kind is
+      when "relocatable" =>
+         for Library_Kind use  "dynamic";
+         for Library_Name use Project'Library_Name & DDS.Dynamic_Lib_Sufix;
+      when "static" =>
+         for Library_Kind use  "static";
+         for Library_Name use Project'Library_Name & DDS.Static_Lib_Sufix;
+   end case;
+
+   case DDS.Build  is
+      when "debug" =>
+         for Library_Name use Project'Library_Name & Debug_Lib_Sufix;
+      when "release" =>
+         for Library_Name use Project'Library_Name & Release_Lib_Sufix;
+   end case;
+
+end DDS.Ada.distloging;

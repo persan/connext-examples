@@ -14,3 +14,6 @@ messages.txt
 *.txt
 *.class
 *.jar
+*.deps
+b__*
+*.bexch
