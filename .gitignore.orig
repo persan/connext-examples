@@ -1,0 +1,22 @@
+*.a
+*.ali
+.clang*
+*.d
+/.gen
+gpsauto.cgpr
+*.lexch
+*-loc.xml
+messages.txt
+*.o
+*.so
+*.stderr
+*.stdout
+*.txt
+*.class
+*.jar
+*.deps
+<<<<<<< HEAD
+b__*
+*.bexch
+=======
+>>>>>>> d89aa19d82a1e003c1726d20baddcb7f239e5b62

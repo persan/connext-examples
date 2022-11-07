@@ -1,0 +1,33 @@
+with "dds.gpr";
+with "dds-ada-distloging.gpr";
+<<<<<<< HEAD
+
+=======
+>>>>>>> d89aa19d82a1e003c1726d20baddcb7f239e5b62
+project Hello_Distributed_Logger is
+
+   for Languages use ("Ada");
+   for Source_Dirs use ("src/**");
+   for Main use ("hello.adb");
+<<<<<<< HEAD
+   for Object_Dir use ".obj/" & project'Name;
+   for Exec_Dir use ".";
+
+   package Builder is
+      for Switches ("ada") use ("-j0", "-k", "-g");
+   end Builder;
+
+   package Compiler is
+      for Switches ("ada") use ("-g");
+   end Compiler;
+
+   package Linker is
+      for Switches ("ada") use ("-g");
+   end Linker;
+
+=======
+   for Object_Dir use ".obj/" & project'name;	
+   for Exec_Dir use ".";
+>>>>>>> d89aa19d82a1e003c1726d20baddcb7f239e5b62
+end Hello_Distributed_Logger;
+
