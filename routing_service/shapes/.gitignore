@@ -1,0 +1,10 @@
+gpsauto.cgpr
+messages.txt
+*-loc.xml
+*.lexch
+*.so
+.clang*
+*.stderr
+*.stdout
+*.o
+*.d

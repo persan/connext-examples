@@ -1,0 +1,13 @@
+gprbuild -d -P/home/per/rti_workspace/7.0.0/examples/connext_dds/c/hello_dynamic/hello_dynamic.gpr -XOS=unix -XRTIDDS_BUILD=release -XRTIDDS_LIBRARY_TYPE=static -XRTIDDS_USE_DIST_LIBRARIES=False -XNDDSHOME=/usr/dds -XRTIDDS_ARCHITECTURE=x86_64-pc-linux-gnu
+Compile
+   [C]            HelloPublisher.c
+   [C]            HelloSubscriber.c
+   [C]            Hello.c
+   [C]            dummy.c
+   [C]            HelloWorldType.c
+Link
+   [archive]      libhello_dynamic.a
+   [index]        libhello_dynamic.a
+   [link]         HelloPublisher.c
+   [link]         HelloSubscriber.c
+[2022-10-31 18:28:36] process terminated successfully, elapsed time: 05.33s

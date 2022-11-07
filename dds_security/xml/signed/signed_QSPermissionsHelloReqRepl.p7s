@@ -1,0 +1,79 @@
+MIME-Version: 1.0
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----BB34A4EEB7C37D7CEE9DBB68B609D3F1"
+
+This is an S/MIME signed message
+
+------BB34A4EEB7C37D7CEE9DBB68B609D3F1
+Content-Type: text/plain
+
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/7.0.0/dds_security_permissions.xsd">
+    <permissions>
+        <grant name="Participant_QS_SharedSubscriber">
+            <subject_name>C=US, ST=CA, O=Real Time Innovations, emailAddress=ecdsa01QsDomainParticipant@rti.com, CN=RTI ECDSA01 (p256) QsDomainParticipant</subject_name>
+            <validity>
+                <!-- Format is CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm] in GMT -->
+                <not_before>2013-06-01T13:00:00</not_before>
+                <not_after>2037-06-01T13:00:00</not_after>
+            </validity>
+            <allow_rule>
+                <domains>
+                    <id_range>
+                        <min>0</min>
+                    </id_range>
+                </domains>
+                <publish>
+                    <topics>
+                        <topic>HelloWorldTopic@SharedSubscriber</topic>
+                        <topic>HelloWorldTopicReply@SharedSubscriber</topic>                        
+                        <!-- it is only needed as a workaround to QUEUEING-701 -->
+                        <topic>HelloWorldTopic</topic>
+                        <topic>HelloWorldTopicReply</topic>
+                        
+                    </topics>
+                </publish>
+                <subscribe>
+                    <topics>
+                        <topic>HelloWorldTopic</topic>
+                        <topic>HelloWorldTopicReply</topic>
+                    </topics>
+                </subscribe>
+            </allow_rule>
+            <default>DENY</default>
+        </grant>
+    </permissions>
+</dds>
+
+------BB34A4EEB7C37D7CEE9DBB68B609D3F1
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+
+MIIEfAYJKoZIhvcNAQcCoIIEbTCCBGkCAQExDzANBglghkgBZQMEAgEFADALBgkq
+hkiG9w0BBwGgggI3MIICMzCCAdkCFHImk1Px44e3tBMRac4Tgq9hB609MAoGCCqG
+SM49BAMCMIGbMQswCQYDVQQGEwJVUzELMAkGA1UECAwCQ0ExFDASBgNVBAcMC1Nh
+bnRhIENsYXJhMR4wHAYDVQQKDBVSZWFsIFRpbWUgSW5ub3ZhdGlvbnMxIzAhBgNV
+BAMMGlJUSSBFQ0RTQTAxIChwMjU2KSBST09UIENBMSQwIgYJKoZIhvcNAQkBFhVl
+Y2RzYTAxUm9vdENhQHJ0aS5jb20wHhcNMjIwODEyMTQwNzIzWhcNMjcwODExMTQw
+NzIzWjCBmzELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMRQwEgYDVQQHDAtTYW50
+YSBDbGFyYTEeMBwGA1UECgwVUmVhbCBUaW1lIElubm92YXRpb25zMSMwIQYDVQQD
+DBpSVEkgRUNEU0EwMSAocDI1NikgUk9PVCBDQTEkMCIGCSqGSIb3DQEJARYVZWNk
+c2EwMVJvb3RDYUBydGkuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAELoMb
+pCJi0lzp86tPF/TbbTPVm0IfWPw8t4sZsAhnG14+pxCZ0zkseJCt4tliJZiDn5kF
+vMxptrPQKCMsYW0ZDDAKBggqhkjOPQQDAgNIADBFAiEAzkOKsxQe7uzpbBGuKcTF
+rBwDGowGwT4aua3vhd+HfYUCICanXtXkN8kYWR2ieyvWmoOXWPWW16g5xrYId8a5
+aO0VMYICCTCCAgUCAQEwgbQwgZsxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEU
+MBIGA1UEBwwLU2FudGEgQ2xhcmExHjAcBgNVBAoMFVJlYWwgVGltZSBJbm5vdmF0
+aW9uczEjMCEGA1UEAwwaUlRJIEVDRFNBMDEgKHAyNTYpIFJPT1QgQ0ExJDAiBgkq
+hkiG9w0BCQEWFWVjZHNhMDFSb290Q2FAcnRpLmNvbQIUciaTU/Hjh7e0ExFpzhOC
+r2EHrT0wDQYJYIZIAWUDBAIBBQCggeQwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEH
+ATAcBgkqhkiG9w0BCQUxDxcNMjIwODEyMTQwNzMwWjAvBgkqhkiG9w0BCQQxIgQg
+dWeRy9UU5+1SAojAj6KelVarBeO6neONoEA549eDaLIweQYJKoZIhvcNAQkPMWww
+ajALBglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG
+9w0DBzAOBggqhkiG9w0DAgICAIAwDQYIKoZIhvcNAwICAUAwBwYFKw4DAgcwDQYI
+KoZIhvcNAwICASgwCgYIKoZIzj0EAwIERzBFAiEA3r+Uul/S+HlMSlTx7GTvTlxr
+JW+ErDFzzGCVX+o/PvsCIBmm1DSIJ72y/iytUFDVxKRpm6zpsQix8vEIYdpmsJwk
+
+------BB34A4EEB7C37D7CEE9DBB68B609D3F1--
+

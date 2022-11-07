@@ -1,0 +1,4 @@
+struct HelloWorldTopicQuery {
+	long id; //@key
+	string message;	
+};

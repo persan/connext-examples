@@ -1,0 +1,59 @@
+
+--  #include <stdio.h>
+--  #include <string.h>
+--  #include "ndds/ndds_c.h"
+--  #include "routingservice/routingservice_adapter.h"
+package Line_Conversion is
+   pragma Elaborate_Body;
+   --  
+   --  /* ========================================================================= */
+   --  /*                                                                           */
+   --  /* Read line                                                                 */
+   --  /*                                                                           */
+   --  /* ========================================================================= */
+
+   --  int RTI_RoutingServiceFileAdapter_read_sample(
+   --      struct DDS_DynamicData * sampleOut, 
+   --      FILE * file,
+   --      char * buffer, 
+   --      int maxSampleSize,
+   --      RTI_RoutingServiceEnvironment * env);
+   --  
+   --  
+   --  /* ========================================================================= */
+   --  /*                                                                           */
+   --  /* Write line                                                                */
+   --  /*                                                                           */
+   --  /* ========================================================================= */
+   --  
+   --  int RTI_RoutingServiceFileAdapter_write_sample(
+   --      struct DDS_DynamicData * sample, 
+   --      FILE * file,
+   --      RTI_RoutingServiceEnvironment * env);
+   --  
+   --  /* ========================================================================= */
+   --  /*                                                                           */
+   --  /* Utility                                                                   */
+   --  /*                                                                           */
+   --  /* ========================================================================= */
+   --  
+   --  char * RTI_RoutingServiceFileAdapter_trim(char * str);
+   --  
+   --  /*****************************************************************************/
+   --  
+   --  int RTI_RoutingServiceFileAdapter_assign(
+   --      struct DDS_DynamicData * sample,
+   --      const char * field,
+   --      const char * value,
+   --      RTI_RoutingServiceEnvironment * env);
+   --  
+   --  /*****************************************************************************/
+   --  
+   --  int RTI_RoutingServiceFileAdapter_write_member(
+   --      const struct DDS_DynamicData * sample,
+   --      const struct DDS_DynamicDataMemberInfo * info,
+   --      FILE * file,
+   --      RTI_RoutingServiceEnvironment * env);
+   --  
+   --  #endif
+end Line_Conversion;

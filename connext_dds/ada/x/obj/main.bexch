@@ -1,0 +1,31 @@
+[GENERATED OBJECT FILE]
+b__main.o
+[PROJECT FILES]
+/home/per/rti_workspace/7.0.0/examples/connext_dds/ada/x/test.gpr
+20221031181755 b7d5853b5876b156f2b9f09d49136b1a
+/usr/dds/lib/gnat/dds-core.gpr
+20221013050220 e9873a56273b6b0f52c3aa236a98242b
+/usr/dds/lib/gnat/dds-c.gpr
+20221013050220 d3c368beca965da9f4cb9e43381970df
+/usr/dds/lib/gnat/dds.gpr
+20221013050220 76f5e376f4e752e43f4370f6a2c17cdb
+/usr/dds/lib/gnat/dds-ada.gpr
+20221013050220 10eecb42ecbf6cb9190fc9531a8f5730
+[BOUND OBJECT FILES]
+/home/per/rti_workspace/7.0.0/examples/connext_dds/ada/x/obj/main.o
+[GENERATED SOURCE FILES]
+b__main.ads
+b__main.adb
+b__main.ali
+[RESULTING OPTIONS]
+-L/home/per/rti_workspace/7.0.0/examples/connext_dds/ada/x/obj/
+-L/home/per/rti_workspace/7.0.0/examples/connext_dds/ada/x/obj/
+-L/usr/dds/lib/x86_64-pc-linux-gnu/static/release/ali/
+-L/usr/dds/lib/x86_64-pc-linux-gnu/
+-L/home/gnat/lib/gcc/x86_64-pc-linux-gnu/11.3.1/adalib/
+-static
+/home/gnat/lib/gcc/x86_64-pc-linux-gnu/11.3.1/adalib/libgnarl.a
+/home/gnat/lib/gcc/x86_64-pc-linux-gnu/11.3.1/adalib/libgnat.a
+-lrt
+-lpthread
+-ldl

@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<!--
+Description
+XML QoS Profile for HelloWorldQueue
+
+For more information about XML QoS Profiles see Chapter 15 in the
+RTI Connext user manual.
+-->
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/7.0.0/rti_dds_qos_profiles.xsd">
+  <!-- QoS Library containing the QoS profile used in the generated example.
+
+        A QoS library is a named set of QoS profiles.
+    -->
+  <qos_library name="HelloWorldQueue_Library">
+
+    <!-- QoS profile used to configure reliable communication between the DataWriter
+             and DataReader created in the example code.
+
+             A QoS profile groups a set of related QoS.
+        -->
+    <qos_profile name="HelloWorldQueue_Profile"
+        base_name="BuiltinQosLibExp::Generic.StrictReliable"
+        is_default_qos="true">
+      <!-- uncomment the following for debugging purpose -->
+      <!--
+      <participant_factory_qos>
+        <logging>
+          <verbosity>WARNING</verbosity>
+        </logging>
+      </participant_factory_qos>-->
+
+      <domain_participant_qos>
+        <transport_builtin>
+          <mask>UDPv4</mask>
+        </transport_builtin>
+      </domain_participant_qos>
+
+      <datawriter_qos>
+        <reliability>
+          <acknowledgment_kind>
+              APPLICATION_EXPLICIT_ACKNOWLEDGMENT_MODE
+          </acknowledgment_kind>
+        </reliability>
+        <property>
+          <value>
+            <element>
+              <name>dds.data_writer.history.memory_manager.fast_pool.pool_buffer_max_size</name>
+              <value>4096</value>
+            </element>
+          </value>
+        </property>
+      </datawriter_qos>
+
+      <datareader_qos>
+        <reliability>
+          <acknowledgment_kind>
+              APPLICATION_EXPLICIT_ACKNOWLEDGMENT_MODE
+          </acknowledgment_kind>
+        </reliability>
+        <reader_resource_limits>
+          <max_app_ack_response_length>1</max_app_ack_response_length>
+        </reader_resource_limits>
+        <property>
+          <value>
+            <element>
+              <name>dds.data_reader.history.memory_manager.fast_pool.pool_buffer_max_size</name>
+              <value>4096</value>
+            </element>
+          </value>
+        </property>
+      </datareader_qos>
+
+    </qos_profile>
+
+    <qos_profile name="HelloWorldQueueSecurityPublisher_Profile"
+        base_name="HelloWorldQueue_Profile" >
+      <!-- uncomment the following for debugging purpose -->
+      <!--
+      <participant_factory_qos>
+        <logging>
+          <verbosity>WARNING</verbosity>
+        </logging>
+      </participant_factory_qos>-->
+
+      <domain_participant_qos base_name="BuiltinQosLib::Generic.Security">
+        <transport_builtin>
+          <mask>UDPv4</mask>
+        </transport_builtin>
+          <property>
+            <value>
+                <element>
+                    <name>dds.sec.auth.identity_ca</name>
+                    <value>file:../../../dds_security/cert/ecdsa01/ca/ecdsa01RootCaCert.pem</value>
+                </element>
+                <element>
+                    <name>dds.sec.auth.identity_certificate</name>
+                    <value>file:../../../dds_security/cert/ecdsa01/identities/ecdsa01Peer01Cert.pem</value>
+                </element>
+                <element>
+                    <name>dds.sec.auth.private_key</name>
+                    <value>file:../../../dds_security/cert/ecdsa01/identities/ecdsa01Peer01Key.pem</value>
+                </element>
+                <element>
+                    <name>dds.sec.access.permissions_ca</name>
+                    <value>file:../../../dds_security/cert/ecdsa01/ca/ecdsa01RootCaCert.pem</value>
+                </element>
+                <element>
+                    <name>dds.sec.access.governance</name>
+                    <value>file:../../../dds_security/xml/signed/signed_Governance.p7s</value>
+                </element>
+                <element>
+                    <name>dds.sec.access.permissions</name>
+                    <value>file:../../../dds_security/xml/signed/signed_Peer1PermissionsHelloQS.p7s</value>
+                </element>
+            </value>
+        </property>
+      </domain_participant_qos>
+    </qos_profile>
+
+    <qos_profile name="HelloWorldQueueSecuritySubscriber_Profile"
+        base_name="HelloWorldQueue_Profile" >
+      <!-- uncomment the following for debugging purpose -->
+      <!--
+      <participant_factory_qos>
+        <logging>
+          <verbosity>WARNING</verbosity>
+        </logging>
+      </participant_factory_qos>-->
+
+      <domain_participant_qos base_name="BuiltinQosLib::Generic.Security">
+        <transport_builtin>
+          <mask>UDPv4</mask>
+        </transport_builtin>
+          <property>
+            <value>
+                <element>
+                    <name>dds.sec.auth.identity_ca</name>
+                    <value>file:../../../dds_security/cert/ecdsa01/ca/ecdsa01RootCaCert.pem</value>
+                </element>
+                <element>
+                    <name>dds.sec.auth.identity_certificate</name>
+                    <value>file:../../../dds_security/cert/ecdsa01/identities/ecdsa01Peer02Cert.pem</value>
+                </element>
+                <element>
+                    <name>dds.sec.auth.private_key</name>
+                    <value>file:../../../dds_security/cert/ecdsa01/identities/ecdsa01Peer02Key.pem</value>
+                </element>
+                <element>
+                    <name>dds.sec.access.permissions_ca</name>
+                    <value>file:../../../dds_security/cert/ecdsa01/ca/ecdsa01RootCaCert.pem</value>
+                </element>
+                <element>
+                  <name>dds.sec.auth.password</name>
+                  <value>VG9tQjEy</value>
+                </element>
+                <element>
+                    <name>dds.sec.access.governance</name>
+                    <value>file:../../../dds_security/xml/signed/signed_Governance.p7s</value>
+                </element>
+                <element>
+                    <name>dds.sec.access.permissions</name>
+                    <value>file:../../../dds_security/xml/signed/signed_Peer2PermissionsHelloQS.p7s</value>
+                </element>
+            </value>
+        </property>
+      </domain_participant_qos>
+    </qos_profile>
+  </qos_library>
+</dds>

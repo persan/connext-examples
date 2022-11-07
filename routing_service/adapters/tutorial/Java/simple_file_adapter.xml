@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/7.0.0/rti_routing_service.xsd">
+    <plugin_library name="adapters">
+        <java_adapter_plugin name="simple_file">
+            <class_name>routingservice.adapter.simplefile.SimpleFileAdapter</class_name>
+        </java_adapter_plugin>
+    </plugin_library>
+
+    <types>
+        <struct name="TextLine">
+            <member name="value" type="string" stringMaxLength="2048"/>
+        </struct>
+    </types>
+
+    <routing_service name="file_to_file">
+        <jvm>
+            <class_path>
+                <element>./class/simplefileadapter.jar</element>
+            </class_path>
+            <!-- To debug
+            <options>
+                <element>-Xdebug</element>
+                <element>-Xrunjdwp:transport=dt_socket,address=1024,server=y,suspend=y</element>
+            </options>
+            -->
+        </jvm>
+
+        <domain_route name="domain_route">
+
+            <connection name="1" plugin_name="adapters::simple_file">                
+                <property>
+                    <value>
+                        <element>
+                            <name>directory</name>
+                            <value>.</value>
+                        </element>
+                    </value>
+                </property>
+                <registered_type name="TextLine" type_name="TextLine"/>
+            </connection>
+
+            <connection name="2" plugin_name="adapters::simple_file">
+                <property>
+                    <value>
+                        <element>
+                            <name>directory</name>
+                            <value>.</value>
+                        </element>
+                    </value>
+                </property>
+                <registered_type name="TextLine" type_name="TextLine"/>
+            </connection>
+
+
+            <session name="session">
+                <route name="route">
+                    <input connection="1">
+                        <stream_name>HelloWorld</stream_name>
+                        <registered_type_name>TextLine</registered_type_name>
+                        <property>
+                            <value>
+                                <element>
+                                    <name>read_period</name>
+                                    <value>1000</value>
+                                </element>
+                            </value>
+                        </property>
+                    </input>
+                    <output>
+                        <stream_name>HelloWorld_output</stream_name>
+                        <registered_type_name>TextLine</registered_type_name>
+                        <property>
+                            <value>
+                                <element>
+                                    <name>print_to_stdout</name>
+                                    <value>1</value>
+                                </element>
+                            </value>
+                        </property>
+                    </output>
+                </route>
+            </session>
+
+        </domain_route>
+
+    </routing_service>
+
+</dds>

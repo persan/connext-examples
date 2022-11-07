@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/7.0.0/rti_dds_profiles.xsd">
+
+    <qos_library name="DilStacking_Library">
+
+        <!-- This QoS profile enables all the Limited Bandwidth Plugins (LBED,
+            LBPD, and LBRTPS using ZRTPS -->
+        <qos_profile name="LimitedBandwidthPlugins">
+            <domain_participant_qos>
+                <!-- When using both LBPD and LBED, this QoS must be set to
+                    MASK_NONE. DPSE cannot be used for enabling LBED in this
+                    case. -->
+                <discovery_config>
+                    <builtin_discovery_plugins>MASK_NONE</builtin_discovery_plugins>
+                </discovery_config>
+                <!-- Deactivate all builtin transports because the application
+                    will use LBRTPS with ZRTPS -->
+                <transport_builtin>
+                    <mask>MASK_NONE</mask>
+                </transport_builtin>
+                <!-- Properties for enabling and configuring each plugin -->
+                <property>
+                    <value>
+                        <!-- LBPD -->
+                        <element>
+                            <name>dds.discovery.participant.load_plugins</name>
+                            <value>dds.discovery.participant.lbpdiscovery</value>
+                        </element>
+                        <element>
+                            <name>dds.discovery.participant.lbpdiscovery.library</name>
+                            <value>rtilbpdisc</value>
+                        </element>
+                        <element>
+                            <name>dds.discovery.participant.lbpdiscovery.create_function</name>
+                            <value>DDS_LBPDiscoveryPlugin_create</value>
+                        </element>
+
+                        <!-- LBED -->
+                        <element>
+                            <name>dds.discovery.endpoint.load_plugins</name>
+                            <value>dds.discovery.endpoint.lbediscovery</value>
+                        </element>
+                        <element>
+                            <name>dds.discovery.endpoint.lbediscovery.library</name>
+                            <value>rtilbedisc</value>
+                        </element>
+                        <element>
+                            <name>dds.discovery.endpoint.lbediscovery.create_function</name>
+                            <value>DDS_LBEDiscoveryPlugin_create</value>
+                        </element>
+
+                        <!-- LBRTPS using ZRTPS as subtransport -->
+                        <element>
+                            <name>dds.transport.load_plugins</name>
+                            <value>dds.transport.lbrtps</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.lbrtps.library</name>
+                            <value>rtilbrtps</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.lbrtps.create_function</name>
+                            <value>LBRTPS_Transport_create_plugin</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.lbrtps.subtransport</name>
+                            <value>zrtps</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.lbrtps.aliases</name>
+                            <value>lbrtps.zrtps</value>
+                        </element>
+
+                        <!-- ZRTPS using UDPv4 as subtransport -->
+                        <element>
+                            <name>dds.transport.lbrtps.zrtps.library</name>
+                            <value>rtizrtps</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.lbrtps.zrtps.create_function</name>
+                            <value>ZRTPS_Transport_create_plugin</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.lbrtps.zrtps.subtransport</name>
+                            <value>UDPv4</value>
+                        </element>
+                    </value>
+                </property>
+            </domain_participant_qos>
+        </qos_profile>
+
+        <!-- The QoS profile used by the publishing entities -->
+        <qos_profile name="DilStacking_Publisher_Profile"
+                base_name="DilStacking_Library::LimitedBandwidthPlugins">
+            <domain_participant_qos>
+                <participant_name>
+                    <name>Publisher</name>
+                </participant_name>
+                <!-- This participant needs to load the information of the
+                    Subscriber participant in order to statically discover
+                    it using LBPD -->
+                <property>
+                    <value>
+                        <element>
+                            <name>dds.discovery.participant.lbpdiscovery.config_file</name>
+                            <value>LBPDiscoveryPluginExampleSubscriber.xml</value>
+                        </element>
+                    </value>
+                </property>
+            </domain_participant_qos>
+            <datawriter_qos>
+                <protocol>
+                    <rtps_object_id>100</rtps_object_id>
+                </protocol>
+            </datawriter_qos>
+        </qos_profile>
+
+        <!-- The QoS profile used by the subscribing entities -->
+        <qos_profile name="DilStacking_Subscriber_Profile"
+                base_name="DilStacking_Library::LimitedBandwidthPlugins">
+            <domain_participant_qos>
+                <participant_name>
+                    <name>Subscriber</name>
+                </participant_name>
+                <!-- This participant needs to load the information of the
+                    Publisher participant in order to statically discover
+                    it using LBPD -->
+                <property>
+                    <value>
+                        <element>
+                            <name>dds.discovery.participant.lbpdiscovery.config_file</name>
+                            <value>LBPDiscoveryPluginExamplePublisher.xml</value>
+                        </element>
+                    </value>
+                </property>
+            </domain_participant_qos>
+            <datareader_qos>
+                <protocol>
+                    <rtps_object_id>200</rtps_object_id>
+                </protocol>
+            </datareader_qos>
+        </qos_profile>
+
+    </qos_library>
+
+    <!-- From this point to the end of the file, we specify the DDS-XML
+        information that LBED requires -->
+    <types>
+        <struct name= "DilStacking">
+            <member name="data" type="int32"/>
+        </struct>
+    </types>
+
+    <domain_library name="DilStacking_Domain_Library">
+        <!-- IMPORTANT: change the domain_id value if you plan to use a
+            domain different than 0 -->
+        <domain name="DilStacking_Domain" domain_id="0">
+            <register_type name="DilStacking" type_ref="DilStacking"/>
+            <topic name="Example DilStacking" register_type_ref="DilStacking"/>
+        </domain>
+    </domain_library>
+
+    <domain_participant_library name="DilStacking_DomainParticipant_Library">
+        <domain_participant name="Publisher"
+                domain_ref="DilStacking_Domain_Library::DilStacking_Domain">
+            <publisher name="Pub">
+                <data_writer name="DW" topic_ref="Example DilStacking">
+                    <datawriter_qos base_name="DilStacking_Library::DilStacking_Publisher_Profile"/>
+                </data_writer>
+            </publisher>
+        </domain_participant>
+
+        <domain_participant name="Subscriber"
+                domain_ref="DilStacking_Domain_Library::DilStacking_Domain">
+            <subscriber name="Sub">
+                <data_reader name="DR" topic_ref="Example DilStacking">
+                    <datareader_qos base_name="DilStacking_Library::DilStacking_Subscriber_Profile"/>
+                </data_reader>
+            </subscriber>
+        </domain_participant>
+     </domain_participant_library>
+</dds>

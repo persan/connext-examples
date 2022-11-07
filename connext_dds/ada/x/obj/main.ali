@@ -1,0 +1,419 @@
+V "GNAT Lib v24.20221009"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DISPATCHING_CALLS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_NESTED_FINALIZATION
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_ATTRIBUTES
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U main%b		main.adb		0aa885e9 NE OO SU
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W dds%s			dds.adb			dds.ali
+W dds.domainparticipant%s  dds-domainparticipant.adb  dds-domainparticipant.ali
+W dds.domainparticipantfactory%s  dds-domainparticipantfactory.adb  dds-domainparticipantfactory.ali
+Z system.img_int%s	s-imgint.ads		s-imgint.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20220909011632 76789da1 ada%s
+D a-assert.ads		20220909011632 ba465f5c ada.assertions%s
+D a-calend.ads		20220909011632 f55c50a3 ada.calendar%s
+D a-contai.ads		20220909011632 61e5e089 ada.containers%s
+D a-except.ads		20220909011632 2a7d8d70 ada.exceptions%s
+D a-finali.ads		20220909011632 bf4f806b ada.finalization%s
+D a-ioexce.ads		20220909011632 40018c65 ada.io_exceptions%s
+D a-numeri.ads		20220909011632 84bea7a3 ada.numerics%s
+D a-nubinu.ads		20220909011632 93f1f3d1 ada.numerics.big_numbers%s
+D a-nbnbig.ads		20220909011632 711e0174 ada.numerics.big_numbers.big_integers_ghost%s
+D a-reatim.ads		20220909011632 b89a10c3 ada.real_time%s
+D a-stream.ads		20220909011632 119b8fb3 ada.streams%s
+D a-string.ads		20220909011632 90ac6797 ada.strings%s
+D a-sttebu.ads		20220909011632 18209c64 ada.strings.text_buffers%s
+D a-stuten.ads		20220909011632 c6ced0ae ada.strings.utf_encoding%s
+D a-tags.ads		20220909011632 9eaa38c6 ada.tags%s
+D a-textio.ads		20220909011632 5c2c6153 ada.text_io%s
+D a-unccon.ads		20220909011632 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20220909011632 c3a8ac65 ada.unchecked_deallocation%s
+D dds.ads		20221013050224 3d223d04 dds%s
+D dds-condition.ads	20221013050225 8a705ddf dds.condition%s
+D dds-contentfilteredtopic.ads  20221013050225 0fbbea90 dds.contentfilteredtopic%s
+D dds-datareader.ads	20221013050224 b58b376b dds.datareader%s
+D dds-datareaderlistener.ads  20221013050224 bfebe045 dds.datareaderlistener%s
+D dds-datareaderseq.ads	20221013050224 cbf9b575 dds.datareaderseq%s
+D dds-datawriter.ads	20221013050224 dd73d16b dds.datawriter%s
+D dds-datawriterlistener.ads  20221013050224 aff1ba42 dds.datawriterlistener%s
+D dds-domain_entity.ads	20221013050224 a26d0a08 dds.domain_entity%s
+D dds-domainparticipant.ads  20221013050224 e4ae375c dds.domainparticipant%s
+D dds-domainparticipantfactory.ads  20221013050224 dd3b2371 dds.domainparticipantfactory%s
+D dds-domainparticipantlistener.ads  20221013050225 d8141b35 dds.domainparticipantlistener%s
+D dds-entity.ads	20221013050224 9493fbd7 dds.entity%s
+D dds-listener.ads	20221013050224 c7492ee0 dds.listener%s
+D dds-metptypesupport.ads  20221013050224 53d06f75 dds.metptypesupport%s
+D dds-multitopic.ads	20221013050224 4e004371 dds.multitopic%s
+D dds-publisher.ads	20221013050224 56e19bba dds.publisher%s
+D dds-publisherlistener.ads  20221013050224 ebf6a7f7 dds.publisherlistener%s
+D dds-publisherseq.ads	20221013050224 07d0a47c dds.publisherseq%s
+D dds-querycondition.ads  20221013050224 b7da8d91 dds.querycondition%s
+D dds-readcondition.ads	20221013050224 052ab769 dds.readcondition%s
+D dds-sequences_generic.ads  20221013050224 0f04050d dds.sequences_generic%s
+D dds-statuscondition.ads  20221013050224 c589d5de dds.statuscondition%s
+D dds-subscriber.ads	20221013050224 1be6ace8 dds.subscriber%s
+D dds-subscriberlistener.ads  20221013050224 85f51424 dds.subscriberlistener%s
+D dds-subscriberseq.ads	20221013050224 5fbdfc24 dds.subscriberseq%s
+D dds-topic.ads		20221013050224 577355e5 dds.topic%s
+D dds-topicdescription.ads  20221013050224 93b01203 dds.topicdescription%s
+D dds-topiclistener.ads	20221013050224 8ab76571 dds.topiclistener%s
+D dds_support.ads	20221013050224 311da22a dds_support%s
+D dds_support-sequences_generic.ads  20221013050224 dc88d822 dds_support.sequences_generic%s
+D gnat.ads		20220909011632 b5988c27 gnat%s
+D g-souinf.ads		20220909011632 291df751 gnat.source_info%s
+D interfac.ads		20220909011632 15f799c2 interfaces%s
+D i-c.ads		20220909011632 5c5a6c17 interfaces.c%s
+D i-cexten.ads		20220909011632 be1de098 interfaces.c.extensions%s
+D i-cstrin.ads		20220909011632 f40c8db4 interfaces.c.strings%s
+D i-cstrea.ads		20220909011632 e53d8b8e interfaces.c_streams%s
+D main.adb		20221031182014 6f11f097 main%b
+D rtidds.ads		20221013050225 95813487 rtidds%s
+D rtidds-low_level.ads	20221013050225 d06ecca5 rtidds.low_level%s
+D rtidds-low_level-bits_types_struct_file_h.ads  20221013050225 8a41badf rtidds.low_level.bits_types_struct_file_h%s
+D rtidds-low_level-ndds_advlog_advlog_logger_h.ads  20221013050225 ec4d1b9b rtidds.low_level.ndds_advlog_advlog_logger_h%s
+D rtidds-low_level-ndds_cdr_cdr_encapsulation_h.ads  20221013050224 ce7c1a50 rtidds.low_level.ndds_cdr_cdr_encapsulation_h%s
+D rtidds-low_level-ndds_cdr_cdr_stream_h.ads  20221013050224 c4bec88a rtidds.low_level.ndds_cdr_cdr_stream_h%s
+D rtidds-low_level-ndds_cdr_cdr_stream_impl_h.ads  20221013050225 e2d61110 rtidds.low_level.ndds_cdr_cdr_stream_impl_h%s
+D rtidds-low_level-ndds_cdr_cdr_type_h.ads  20221013050225 e3656a6e rtidds.low_level.ndds_cdr_cdr_type_h%s
+D rtidds-low_level-ndds_cdr_cdr_typecode_h.ads  20221013050225 c97c4af3 rtidds.low_level.ndds_cdr_cdr_typecode_h%s
+D rtidds-low_level-ndds_cdr_cdr_typeobject_h.ads  20221013050224 00d00409 rtidds.low_level.ndds_cdr_cdr_typeobject_h%s
+D rtidds-low_level-ndds_clock_clock_interface_h.ads  20221013050225 79c4c331 rtidds.low_level.ndds_clock_clock_interface_h%s
+D rtidds-low_level-ndds_commend_commend_activefacade_h.ads  20221013050225 66ea7be4 rtidds.low_level.ndds_commend_commend_activefacade_h%s
+D rtidds-low_level-ndds_commend_commend_facade_h.ads  20221013050225 779b09f8 rtidds.low_level.ndds_commend_commend_facade_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_builtin_h.ads  20221013050225 c79adbec rtidds.low_level.ndds_dds_c_dds_c_builtin_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_builtin_impl_h.ads  20221013050225 ba7d82e5 rtidds.low_level.ndds_dds_c_dds_c_builtin_impl_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_builtin_trust_h.ads  20221013050225 37e30382 rtidds.low_level.ndds_dds_c_dds_c_builtin_trust_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_builtintypes_h.ads  20221013050225 4e6fc050 rtidds.low_level.ndds_dds_c_dds_c_builtintypes_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_common_h.ads  20221013050225 3a420a0e rtidds.low_level.ndds_dds_c_dds_c_common_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_domain_h.ads  20221013050225 2f97aa73 rtidds.low_level.ndds_dds_c_dds_c_domain_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_flowcontroller_h.ads  20221013050224 f6a04b64 rtidds.low_level.ndds_dds_c_dds_c_flowcontroller_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_infrastructure_h.ads  20221013050224 f39a7852 rtidds.low_level.ndds_dds_c_dds_c_infrastructure_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_printformat_h.ads  20221013050224 e0dbf77e rtidds.low_level.ndds_dds_c_dds_c_printformat_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_publication_h.ads  20221013050225 c4beea13 rtidds.low_level.ndds_dds_c_dds_c_publication_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_sequence_h.ads  20221013050225 94c755db rtidds.low_level.ndds_dds_c_dds_c_sequence_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_sqlfilter_h.ads  20221013050224 27257008 rtidds.low_level.ndds_dds_c_dds_c_sqlfilter_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_subscription_h.ads  20221013050225 a2ca812a rtidds.low_level.ndds_dds_c_dds_c_subscription_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_topic_h.ads  20221013050225 f2365c7d rtidds.low_level.ndds_dds_c_dds_c_topic_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_typecode_h.ads  20221013050225 9de79367 rtidds.low_level.ndds_dds_c_dds_c_typecode_h%s
+D rtidds-low_level-ndds_dds_c_dds_c_typeobject_h.ads  20221013050224 590db3fe rtidds.low_level.ndds_dds_c_dds_c_typeobject_h%s
+D rtidds-low_level-ndds_disc_disc_builtin_h.ads  20221013050225 a9e44807 rtidds.low_level.ndds_disc_disc_builtin_h%s
+D rtidds-low_level-ndds_event_event_activedatabase_impl_h.ads  20221013050224 ffc1d4f9 rtidds.low_level.ndds_event_event_activedatabase_impl_h%s
+D rtidds-low_level-ndds_event_event_activegenerator_h.ads  20221013050225 b4b2e1d9 rtidds.low_level.ndds_event_event_activegenerator_h%s
+D rtidds-low_level-ndds_event_event_activeobject_h.ads  20221013050225 b4b10803 rtidds.low_level.ndds_event_event_activeobject_h%s
+D rtidds-low_level-ndds_event_event_generator_h.ads  20221013050225 6550d3b9 rtidds.low_level.ndds_event_event_generator_h%s
+D rtidds-low_level-ndds_event_event_jobdispatcher_h.ads  20221013050225 7e5f0c3b rtidds.low_level.ndds_event_event_jobdispatcher_h%s
+D rtidds-low_level-ndds_event_event_timer_h.ads  20221013050224 14b3047c rtidds.low_level.ndds_event_event_timer_h%s
+D rtidds-low_level-ndds_log_log_common_h.ads  20221013050225 70aee98b rtidds.low_level.ndds_log_log_common_h%s
+D rtidds-low_level-ndds_mig_mig_generator_h.ads  20221013050225 4559210c rtidds.low_level.ndds_mig_mig_generator_h%s
+D rtidds-low_level-ndds_mig_mig_generator_impl_h.ads  20221013050225 6713a02d rtidds.low_level.ndds_mig_mig_generator_impl_h%s
+D rtidds-low_level-ndds_mig_mig_interpreter_h.ads  20221013050225 2c1e5eae rtidds.low_level.ndds_mig_mig_interpreter_h%s
+D rtidds-low_level-ndds_mig_mig_rtps_h.ads  20221013050225 252dc3c7 rtidds.low_level.ndds_mig_mig_rtps_h%s
+D rtidds-low_level-ndds_mig_mig_rtps_impl_h.ads  20221013050224 5a0630c6 rtidds.low_level.ndds_mig_mig_rtps_impl_h%s
+D rtidds-low_level-ndds_ndds_config_c_h.ads  20221013050224 aa4e19f4 rtidds.low_level.ndds_ndds_config_c_h%s
+D rtidds-low_level-ndds_netio_cap_netio_cap_infrastructure_h.ads  20221013050225 d4c153c3 rtidds.low_level.ndds_netio_cap_netio_cap_infrastructure_h%s
+D rtidds-low_level-ndds_netio_cap_netio_cap_infrastructure_psm_h.ads  20221013050224 33ba4234 rtidds.low_level.ndds_netio_cap_netio_cap_infrastructure_psm_h%s
+D rtidds-low_level-ndds_netio_cap_netio_cap_manager_h.ads  20221013050224 870c2331 rtidds.low_level.ndds_netio_cap_netio_cap_manager_h%s
+D rtidds-low_level-ndds_netio_netio_common_h.ads  20221013050224 aa4d0bb5 rtidds.low_level.ndds_netio_netio_common_h%s
+D rtidds-low_level-ndds_netio_netio_configurator_h.ads  20221013050225 d9515a5f rtidds.low_level.ndds_netio_netio_configurator_h%s
+D rtidds-low_level-ndds_netio_netio_receiver_h.ads  20221013050225 05b04c35 rtidds.low_level.ndds_netio_netio_receiver_h%s
+D rtidds-low_level-ndds_netio_netio_sender_h.ads  20221013050225 6fe38661 rtidds.low_level.ndds_netio_netio_sender_h%s
+D rtidds-low_level-ndds_netio_netio_sender_impl_h.ads  20221013050225 1432ae78 rtidds.low_level.ndds_netio_netio_sender_impl_h%s
+D rtidds-low_level-ndds_osapi_osapi_activitycontext_h.ads  20221013050224 77e909e2 rtidds.low_level.ndds_osapi_osapi_activitycontext_h%s
+D rtidds-low_level-ndds_osapi_osapi_alignment_h.ads  20221013050225 426a825d rtidds.low_level.ndds_osapi_osapi_alignment_h%s
+D rtidds-low_level-ndds_osapi_osapi_alignment_impl_h.ads  20221013050225 e843d67a rtidds.low_level.ndds_osapi_osapi_alignment_impl_h%s
+D rtidds-low_level-ndds_osapi_osapi_compression_h.ads  20221013050225 332d02a5 rtidds.low_level.ndds_osapi_osapi_compression_h%s
+D rtidds-low_level-ndds_osapi_osapi_context_h.ads  20221013050224 4a23ff59 rtidds.low_level.ndds_osapi_osapi_context_h%s
+D rtidds-low_level-ndds_osapi_osapi_cpu_h.ads  20221013050224 784ed811 rtidds.low_level.ndds_osapi_osapi_cpu_h%s
+D rtidds-low_level-ndds_osapi_osapi_hash_h.ads  20221013050224 a7348fcd rtidds.low_level.ndds_osapi_osapi_hash_h%s
+D rtidds-low_level-ndds_osapi_osapi_ntptime_h.ads  20221013050224 0b6c07e9 rtidds.low_level.ndds_osapi_osapi_ntptime_h%s
+D rtidds-low_level-ndds_osapi_osapi_rtpsguid_h.ads  20221013050225 321cbb9e rtidds.low_level.ndds_osapi_osapi_rtpsguid_h%s
+D rtidds-low_level-ndds_osapi_osapi_socket_h.ads  20221013050224 49594162 rtidds.low_level.ndds_osapi_osapi_socket_h%s
+D rtidds-low_level-ndds_osapi_osapi_threadfactory_h.ads  20221013050225 70e7d684 rtidds.low_level.ndds_osapi_osapi_threadfactory_h%s
+D rtidds-low_level-ndds_osapi_osapi_type_h.ads  20221013050225 28fcf276 rtidds.low_level.ndds_osapi_osapi_type_h%s
+D rtidds-low_level-ndds_pres_pres_common_h.ads  20221013050224 5e1a1c84 rtidds.low_level.ndds_pres_pres_common_h%s
+D rtidds-low_level-ndds_pres_pres_common_impl_h.ads  20221013050225 f3c906d1 rtidds.low_level.ndds_pres_pres_common_impl_h%s
+D rtidds-low_level-ndds_pres_pres_condition_h.ads  20221013050225 ffa46b8e rtidds.low_level.ndds_pres_pres_condition_h%s
+D rtidds-low_level-ndds_pres_pres_participant_h.ads  20221013050224 fa6f1b6f rtidds.low_level.ndds_pres_pres_participant_h%s
+D rtidds-low_level-ndds_pres_pres_psservice_h.ads  20221013050225 69dd8dd3 rtidds.low_level.ndds_pres_pres_psservice_h%s
+D rtidds-low_level-ndds_pres_pres_service_h.ads  20221013050225 2b552197 rtidds.low_level.ndds_pres_pres_service_h%s
+D rtidds-low_level-ndds_pres_pres_typeplugin_h.ads  20221013050225 db4f82de rtidds.low_level.ndds_pres_pres_typeplugin_h%s
+D rtidds-low_level-ndds_reda_reda_buffer_h.ads  20221013050224 16c0b2fe rtidds.low_level.ndds_reda_reda_buffer_h%s
+D rtidds-low_level-ndds_reda_reda_cursor_impl_h.ads  20221013050225 b94857ff rtidds.low_level.ndds_reda_reda_cursor_impl_h%s
+D rtidds-low_level-ndds_reda_reda_database_h.ads  20221013050225 205fec6a rtidds.low_level.ndds_reda_reda_database_h%s
+D rtidds-low_level-ndds_reda_reda_epoch_h.ads  20221013050225 cd8e3123 rtidds.low_level.ndds_reda_reda_epoch_h%s
+D rtidds-low_level-ndds_reda_reda_fastbuffer_h.ads  20221013050224 2ca0b454 rtidds.low_level.ndds_reda_reda_fastbuffer_h%s
+D rtidds-low_level-ndds_reda_reda_hash_h.ads  20221013050225 f79e0ac3 rtidds.low_level.ndds_reda_reda_hash_h%s
+D rtidds-low_level-ndds_reda_reda_hashedskiplist_h.ads  20221013050225 50ebb5a3 rtidds.low_level.ndds_reda_reda_hashedskiplist_h%s
+D rtidds-low_level-ndds_reda_reda_inlinelist_impl_h.ads  20221013050224 b5492265 rtidds.low_level.ndds_reda_reda_inlinelist_impl_h%s
+D rtidds-low_level-ndds_reda_reda_ordereddatatype_h.ads  20221013050225 25582769 rtidds.low_level.ndds_reda_reda_ordereddatatype_h%s
+D rtidds-low_level-ndds_reda_reda_ordereddatatype_impl_h.ads  20221013050225 97af640a rtidds.low_level.ndds_reda_reda_ordereddatatype_impl_h%s
+D rtidds-low_level-ndds_reda_reda_sequencenumber_h.ads  20221013050225 88271672 rtidds.low_level.ndds_reda_reda_sequencenumber_h%s
+D rtidds-low_level-ndds_reda_reda_skiplist_h.ads  20221013050225 89088005 rtidds.low_level.ndds_reda_reda_skiplist_h%s
+D rtidds-low_level-ndds_reda_reda_skiplist_impl_h.ads  20221013050225 0690b07d rtidds.low_level.ndds_reda_reda_skiplist_impl_h%s
+D rtidds-low_level-ndds_reda_reda_string_h.ads  20221013050225 5f7f5749 rtidds.low_level.ndds_reda_reda_string_h%s
+D rtidds-low_level-ndds_reda_reda_table_h.ads  20221013050224 aa9a00cc rtidds.low_level.ndds_reda_reda_table_h%s
+D rtidds-low_level-ndds_reda_reda_table_impl_h.ads  20221013050225 9e525270 rtidds.low_level.ndds_reda_reda_table_impl_h%s
+D rtidds-low_level-ndds_reda_reda_weakreference_h.ads  20221013050225 82e569f8 rtidds.low_level.ndds_reda_reda_weakreference_h%s
+D rtidds-low_level-ndds_reda_reda_weakreference_impl_h.ads  20221013050224 a82a4b88 rtidds.low_level.ndds_reda_reda_weakreference_impl_h%s
+D rtidds-low_level-ndds_reda_reda_worker_h.ads  20221013050225 095b4112 rtidds.low_level.ndds_reda_reda_worker_h%s
+D rtidds-low_level-ndds_reda_reda_worker_impl_h.ads  20221013050225 d86422c8 rtidds.low_level.ndds_reda_reda_worker_impl_h%s
+D rtidds-low_level-ndds_rtixml_rtixml_infrastructure_h.ads  20221013050225 c24511cb rtidds.low_level.ndds_rtixml_rtixml_infrastructure_h%s
+D rtidds-low_level-ndds_transport_transport_common_h.ads  20221013050225 278b65f0 rtidds.low_level.ndds_transport_transport_common_h%s
+D rtidds-low_level-ndds_transport_transport_common_user_h.ads  20221013050225 30c6ef32 rtidds.low_level.ndds_transport_transport_common_user_h%s
+D rtidds-low_level-ndds_transport_transport_interface_h.ads  20221013050224 5ac4afe5 rtidds.low_level.ndds_transport_transport_interface_h%s
+D rtidds-low_level-ndds_transport_transport_interface_user_h.ads  20221013050224 9dd42dd9 rtidds.low_level.ndds_transport_transport_interface_user_h%s
+D rtidds-low_level-ndds_transport_transport_udp_impl_h.ads  20221013050225 391bca8d rtidds.low_level.ndds_transport_transport_udp_impl_h%s
+D rtidds-low_level-ndds_writer_history_writer_history_interface_h.ads  20221013050225 462bfe43 rtidds.low_level.ndds_writer_history_writer_history_interface_h%s
+D rtidds-low_level-ndds_xcdr_xcdr_infrastructure_h.ads  20221013050225 15529e92 rtidds.low_level.ndds_xcdr_xcdr_infrastructure_h%s
+D rtidds-low_level-ndds_xcdr_xcdr_infrastructure_psm_h.ads  20221013050224 693f35b8 rtidds.low_level.ndds_xcdr_xcdr_infrastructure_psm_h%s
+D rtidds-low_level-ndds_xcdr_xcdr_stream_h.ads  20221013050224 4ee63f33 rtidds.low_level.ndds_xcdr_xcdr_stream_h%s
+D rtidds-low_level-ndds_xcdr_xcdr_stream_impl_h.ads  20221013050224 91a64680 rtidds.low_level.ndds_xcdr_xcdr_stream_impl_h%s
+D rtidds-low_level-ndds_xcdr_xcdr_typecode_h.ads  20221013050225 03f7cee1 rtidds.low_level.ndds_xcdr_xcdr_typecode_h%s
+D rtidds-obj.ads	20221013050225 6c033e29 rtidds.obj%s
+D rtidds-obj_impl.ads	20221013050225 fccf14b5 rtidds.obj_impl%s
+D system.ads		20220909011632 426dafb8 system%s
+D s-atacco.ads		20220909011632 903317eb system.address_to_access_conversions%s
+D s-assert.ads		20220909011632 9c4520c7 system.assertions%s
+D s-casuti.ads		20220909011632 cf13d755 system.case_util%s
+D s-crtl.ads		20220909011632 8a0692f8 system.crtl%s
+D s-exctab.ads		20220909011632 91bef6ef system.exception_table%s
+D s-ficobl.ads		20220909011632 dc5161d4 system.file_control_block%s
+D s-finmas.ads		20220909011632 bd688734 system.finalization_masters%s
+D s-finroo.ads		20220909011632 4ff27390 system.finalization_root%s
+D s-imagei.ads		20220909011632 c707dfd0 system.image_i%s
+D s-imgint.ads		20220909011632 d4a52a9b system.img_int%s
+D s-linux.ads		20220909011632 34850a8c system.linux%s
+D s-memory.ads		20220909011632 5b8432d0 system.memory%s
+D s-multip.ads		20220909011632 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20221010031727 d98e680e system.os_constants%s
+D s-osinte.ads		20220909011632 e4f53740 system.os_interface%s
+D s-parame.ads		20220909011632 d494a4a6 system.parameters%s
+D s-pooglo.ads		20220909011632 91708d21 system.pool_global%s
+D s-putima.ads		20220909011632 4e095881 system.put_images%s
+D s-secsta.ads		20220909011632 578279f5 system.secondary_stack%s
+D s-soflin.ads		20220909011632 df77073e system.soft_links%s
+D s-stache.ads		20220909011632 0b81c1fe system.stack_checking%s
+D s-stausa.ads		20220909011632 5be75682 system.stack_usage%s
+D s-stalib.ads		20220909011632 1c9580f6 system.standard_library%s
+D s-stalib.adb		20220909011632 eb464a47 system.standard_library%b
+D s-stoele.ads		20220909011632 ab5468e4 system.storage_elements%s
+D s-stoele.adb		20220909011632 8f5a9db6 system.storage_elements%b
+D s-stopoo.ads		20220909011632 e9fa2dd8 system.storage_pools%s
+D s-stposu.ads		20220909011632 e251976f system.storage_pools.subpools%s
+D s-tasinf.ads		20220909011632 528dde74 system.task_info%s
+D s-taspri.ads		20220909011632 4ec891e7 system.task_primitives%s
+D s-taprop.ads		20220909011632 6eefbe12 system.task_primitives.operations%s
+D s-taskin.ads		20220909011632 0ec7ab0b system.tasking%s
+D s-taprob.ads		20220909011632 acd6094d system.tasking.protected_objects%s
+D s-traent.ads		20220909011632 c81cbf8c system.traceback_entries%s
+D s-unstyp.ads		20220909011632 fa2a7f59 system.unsigned_types%s
+D s-valint.ads		20220909011632 1f610d7a system.val_int%s
+D s-valuns.ads		20220909011632 e8a1f424 system.val_uns%s
+D s-valuti.ads		20220909011632 fcd603d8 system.val_util%s
+D s-valuei.ads		20220909011632 11081e09 system.value_i%s
+D s-vaispe.ads		20220909011632 44130d39 system.value_i_spec%s
+D s-valueu.ads		20220909011632 18770347 system.value_u%s
+D s-vauspe.ads		20220909011632 a67b2f28 system.value_u_spec%s
+D s-wchcon.ads		20220909011632 d9032363 system.wch_con%s
+D s-widuns.ads		20220909011632 866a5800 system.wid_uns%s
+D s-widthu.ads		20220909011632 b32f15e2 system.width_u%s
+G a e
+G c Z b b [main standard 4 11 none]
+G r c none [main standard 4 11 none] [get_instance dds__domainparticipantfactory 28 13 none]
+G r s domainparticipantfactoryqos [main standard 4 11 none] [domainparticipantfactoryqosIP dds 6601 9 none]
+G r f domainparticipantfactoryqos [main standard 4 11 none] [initialize dds 6630 14 none]
+G r c none [main standard 4 11 none] [get_qos dds__domainparticipantfactory 262 14 none]
+X 1 ada.ads
+16K9*Ada 20e8 58|1r6 1r23
+X 17 a-textio.ads
+58K13*Text_IO 787e16 58|1w10 1r27
+566U14*Put_Line 58|9s4
+X 20 dds.ads
+48K9*DDS 6945e8 58|2r6 3r6 5r8 5r51 6r18
+72I12*Long<54|57I9>
+244U14*Initialize 50|21i19
+245U14*Finalize 50|22i19
+246U14*Copy 50|23i19
+257U14*Initialize 50|21i19
+258U14*Finalize 50|22i19
+259U14*Copy 50|23i19
+270U14*Initialize 50|21i19
+271U14*Finalize 50|22i19
+272U14*Copy 50|23i19
+282U14*Initialize 50|21i19
+283U14*Finalize 50|22i19
+284U14*Copy 50|23i19
+294U14*Initialize 50|21i19
+295U14*Finalize 50|22i19
+296U14*Copy 50|23i19
+306U14*Initialize 50|21i19
+307U14*Finalize 50|22i19
+308U14*Copy 50|23i19
+318U14*Initialize 50|21i19
+319U14*Finalize 50|22i19
+320U14*Copy 50|23i19
+329U14*Initialize 50|21i19
+330U14*Finalize 50|22i19
+331U14*Copy 50|23i19
+341U14*Initialize 50|21i19
+342U14*Finalize 50|22i19
+343U14*Copy 50|23i19
+353U14*Initialize 50|21i19
+354U14*Finalize 50|22i19
+355U14*Copy 50|23i19
+365U14*Initialize 50|21i19
+366U14*Finalize 50|22i19
+367U14*Copy 50|23i19
+377U14*Initialize 50|21i19
+378U14*Finalize 50|22i19
+379U14*Copy 50|23i19
+390U14*Initialize 50|21i19
+391U14*Finalize 50|22i19
+392U14*Copy 50|23i19
+409U14*Initialize 50|21i19
+410U14*Finalize 50|22i19
+411U14*Copy 50|23i19
+421U14*Initialize 50|21i19
+422U14*Finalize 50|22i19
+423U14*Copy 50|23i19
+442U14*Initialize 50|21i19
+443U14*Finalize 50|22i19
+444U14*Copy 50|23i19
+459U14*Initialize 50|21i19
+460U14*Finalize 50|22i19
+461U14*Copy 50|23i19
+478U14*Initialize 50|21i19
+479U14*Finalize 50|22i19
+480U14*Copy 50|23i19
+506U14*Initialize 50|21i19
+507U14*Finalize 50|22i19
+508U14*Copy 50|23i19
+679U14*Initialize 50|21i19
+680U14*Finalize 50|22i19
+681U14*Copy 50|23i19
+1279U14*Initialize 50|21i19
+1280U14*Finalize 50|22i19
+1281U14*Copy 50|23i19
+1357U14*Initialize 50|21i19
+1358U14*Finalize 50|22i19
+1359U14*Copy 50|23i19
+2159U14*Initialize 50|21i19
+2160U14*Finalize 50|22i19
+2161U14*Copy 50|23i19
+2193U14*Initialize 50|21i19
+2194U14*Finalize 50|22i19
+2195U14*Copy 50|23i19
+2243U14*Initialize 50|21i19
+2244U14*Finalize 50|22i19
+2245U14*Copy 50|23i19
+2268U14*Initialize<282p14> 50|21i19
+2269U14*Finalize<283p14> 50|22i19
+2270U14*Copy<284p14> 50|23i19
+2321U14*Initialize 50|21i19
+2322U14*Finalize 50|22i19
+2323U14*Copy 50|23i19
+2358U14*Initialize 50|21i19
+2359U14*Finalize 50|22i19
+2360U14*Copy 50|23i19
+2557U14*Initialize 50|21i19
+2558U14*Finalize 50|22i19
+2559U14*Copy 50|23i19
+2591U14*Initialize 50|21i19
+2592U14*Finalize 50|22i19
+2593U14*Copy 50|23i19
+2798U14*Initialize 50|21i19
+2799U14*Finalize 50|22i19
+2800U14*Copy 50|23i19
+3286i7*Max_Objects_Per_Thread{72I12} 58|9r34
+4153U14*Initialize 50|21i19
+4154U14*Finalize 50|22i19
+4155U14*Copy 50|23i19
+4198U14*Initialize 50|21i19
+4199U14*Finalize 50|22i19
+4200U14*Copy 50|23i19
+4249U14*Initialize 50|21i19
+4250U14*Finalize 50|22i19
+4251U14*Copy 50|23i19
+4346U14*Initialize 50|21i19
+4347U14*Finalize 50|22i19
+4348U14*Copy 50|23i19
+4517U14*Initialize 50|21i19
+4518U14*Finalize 50|22i19
+4519U14*Copy 50|23i19
+4670U14*Initialize 50|21i19
+4671U14*Finalize 50|22i19
+4672U14*Copy 50|23i19
+4797U14*Initialize 50|21i19
+4798U14*Finalize 50|22i19
+4799U14*Copy 50|23i19
+4873U14*Initialize 50|21i19
+4874U14*Finalize 50|22i19
+4875U14*Copy 50|23i19
+5060U14*Initialize 50|21i19
+5061U14*Finalize 50|22i19
+5062U14*Copy 50|23i19
+5215U14*Initialize 50|21i19
+5216U14*Finalize 50|22i19
+5217U14*Copy 50|23i19
+6352U14*Initialize 50|21i19
+6353U14*Finalize 50|22i19
+6354U14*Copy 50|23i19
+6601R9*DomainParticipantFactoryQos<6|50R9> 6613e14 58|6r22
+6604r7*Resource_Limits{3285R9} 58|9r18
+X 23 dds-datareader.ads
+52U14*Initialize 50|21i19
+55U14*Finalize 50|22i19
+58U14*Copy 50|23i19
+X 29 dds-domainparticipant.ads
+33K13*DomainParticipant 593e26 58|3w10
+X 30 dds-domainparticipantfactory.ads
+20K13*DomainParticipantFactory 294e33 58|2w10 5r12 5r55
+23P9*Ref_Access(22R9) 58|5r37
+28V13*Get_Instance{23P9} 58|5s80
+262U14*Get_Qos 58|8R6
+X 36 dds-publisher.ads
+43U14*Initialize 50|21i19
+45U14*Finalize 50|22i19
+47U14*Copy 50|23i19
+X 43 dds-subscriber.ads
+41U14*Initialize 50|21i19
+43U14*Finalize 50|22i19
+45U14*Copy 50|23i19
+X 54 i-c.ads
+57I9*int<integer>
+X 58 main.adb
+4U11*Main 4b11 10l5 10t9
+5p4 F{30|23P9} 8r4
+6r4 QoS{20|6601R9} 8m15 8r15 9r14
+X 161 rtidds-obj.ads
+16h9*Ref
+X 163 system.ads
+67M9*Address
+X 175 s-memory.ads
+51V13*Alloc{163|67M9} 101i<c,__gnat_malloc>22
+66U14*Free 102i<c,__gnat_free>22
+74V13*Realloc{163|67M9} 103i<c,__gnat_realloc>22
+X 185 s-stausa.ads
+207U14*Initialize 208i<c,__gnat_stack_usage_initialize>22
+272U14*Output_Results 276i<c,__gnat_stack_usage_output_results>22
+X 187 s-stalib.adb
+87U14 Break_Start 88i<c,__gnat_break_start>22
+

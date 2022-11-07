@@ -1,0 +1,11 @@
+
+Output saved in /home/per/rti_workspace/7.0.0/examples/connext_dds/ada/x/obj/messages.txt
+gprbuild -d -P/home/per/rti_workspace/7.0.0/examples/connext_dds/ada/x/test.gpr -XOS=unix -XRTIDDS_BUILD=release -XRTIDDS_LIBRARY_TYPE=static -XRTIDDS_USE_DIST_LIBRARIES=False -XNDDSHOME=/usr/dds -XRTIDDS_ARCHITECTURE=x86_64-pc-linux-gnu /home/per/rti_workspace/7.0.0/examples/connext_dds/ada/x/src/main.adb
+Compile
+   [Ada]          main.adb
+Bind
+   [gprbind]      main.bexch
+   [Ada]          main.ali
+Link
+   [link]         main.adb
+[2022-10-31 19:20:18] process terminated successfully, elapsed time: 04.31s

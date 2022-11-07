@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/7.0.0/rti_dds_qos_profiles.xsd">
+
+    <!-- QoS Library containing the QoS profile used in the generated example.
+
+        A QoS library is a named set of QoS profiles.
+    -->
+    <qos_library name="HelloWorldTopicQuery_Library">
+
+        <!-- QoS profile used to configure reliable communication between the DataWriter 
+             and DataReader created in the example code.
+
+             A QoS profile groups a set of related QoS.
+        -->
+        <qos_profile name="HelloWorldTopicQuery_Profile" 
+                     base_name="BuiltinQosLibExp::Generic.StrictReliable">
+            <!-- QoS used to configure the data writer created in the example code -->                
+            <datawriter_qos>
+                <publication_name>
+                    <name>HelloWorldTopicQueryDataWriter</name>
+                </publication_name>                
+                <!-- TQ is available only for transient local DWs -->
+                <durability>
+                    <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+                </durability>
+                <history>
+                    <kind>KEEP_ALL_HISTORY_QOS</kind>
+                </history>
+                <!-- enable TQ -->
+                <topic_query_dispatch>
+                    <enable>true</enable>
+                    <!--  To configure TQ sample write flow, use the tags below
+                    or comment them out for no flow control -->                   
+                    <publication_period>
+                        <sec>1</sec>
+                        <nanosec>0</nanosec>
+                    </publication_period>
+                    <samples_per_period>
+                        1
+                    </samples_per_period>                   
+                </topic_query_dispatch>
+                <!-- Resource limits associated to TopicQueries. Values below
+                are set to defaults -->
+                <writer_resource_limits>                    
+                    <initial_active_topic_queries>1</initial_active_topic_queries>
+                    <max_active_topic_queries>LENGTH_UNLIMITED</max_active_topic_queries>
+                </writer_resource_limits>
+            </datawriter_qos>
+
+            <!-- QoS used to configure the data reader created in the example code -->                
+            <datareader_qos>
+                <subscription_name>
+                    <name>HelloWorldTopicQueryDataReader</name>
+                </subscription_name>                
+                <!-- TQ is available only for volatile DRs -->
+                <durability>
+                    <kind>VOLATILE_DURABILITY_QOS</kind>
+                </durability>
+                <history>
+                    <kind>KEEP_ALL_HISTORY_QOS</kind>
+                </history>
+                <!-- Resource limits associated to TopicQueries. Values below
+                are set to defaults -->
+                <reader_resource_limits>
+                    <initial_topic_queries>1</initial_topic_queries>
+                    <max_topic_queries>LENGTH_UNLIMITED</max_topic_queries>
+                </reader_resource_limits>
+            </datareader_qos>
+            
+            <domain_participant_qos>
+                <!--
+                The participant name, if it is set, will be displayed in the
+                RTI tools, making it easier for you to tell one
+                application from another when you're debugging.
+                -->
+                <participant_name>
+                    <name>HelloWorldTopicQueryParticipant</name>
+                    <role_name>HelloWorldTopicQueryParticipantRole</role_name>
+                </participant_name>
+                <!-- Resource limits associated to TopicQueries. Values below
+                are set to defaults -->
+                <resource_limits>
+                    <remote_topic_query_allocation>
+                        <initial_count>1</initial_count>
+                        <max_count>LENGTH_UNLIMITED</max_count>
+                        <incremental_count>-1</incremental_count>
+                    </remote_topic_query_allocation>
+                    <remote_topic_query_hash_buckets>1</remote_topic_query_hash_buckets>
+                </resource_limits>
+            </domain_participant_qos>
+        </qos_profile>
+
+    </qos_library>
+</dds>

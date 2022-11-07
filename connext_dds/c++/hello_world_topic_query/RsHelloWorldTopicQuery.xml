@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/7.0.0/rti_routing_service.xsd">
+    
+    <qos_library name="HelloWorldTopicQueryLibrary">
+        <qos_profile name="HelloWorldTopicQueryProfile">
+            <datareader_qos>
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+                <history>
+                    <kind>KEEP_ALL_HISTORY_QOS</kind>    
+                </history>    
+                <durability>
+                    <kind>VOLATILE_DURABILITY_QOS</kind>
+                </durability>
+            </datareader_qos>
+            <datawriter_qos>
+                <durability>
+                    <kind>VOLATILE_DURABILITY_QOS</kind>
+                </durability>
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                </reliability>
+                <history>
+                    <kind>KEEP_ALL_HISTORY_QOS</kind>    
+                </history>  
+            </datawriter_qos>   
+        </qos_profile>
+        
+    </qos_library>
+    
+    <routing_service name="HelloWorldTopicQuery">
+
+        <annotation>
+            <documentation>
+                Routes samples from domain 0 to domain 1 for the
+                Example HelloWorldTopicQuery topic 
+            </documentation>
+        </annotation>
+        
+        <administration>
+            <domain_id>0</domain_id>
+        </administration>
+        
+        <monitoring>
+            <domain_id>0</domain_id>
+        </monitoring>
+
+        <domain_route name="DomainRoute">
+
+            <participant name="1">
+                <domain_id>0</domain_id>
+            </participant>
+
+            <participant name="2">
+                <domain_id>1</domain_id>
+            </participant>
+
+            <session name="Session">
+                <auto_topic_route name="HelloWorldTopicQueryAutoRoute">
+                    <publish_with_original_info>true</publish_with_original_info>
+                    <!-- enable TQ propagation -->
+                    <topic_query_proxy>
+                        <enabled>true</enabled>		    
+                    </topic_query_proxy>
+                    <input participant="1">
+                        <creation_mode>ON_DOMAIN_AND_ROUTE_MATCH</creation_mode>
+                        <allow_topic_name_filter>
+                            Example HelloWorldTopicQuery
+                        </allow_topic_name_filter>
+                        <!-- Exclude monitoring, administration and logging topics -->
+                        <deny_topic_name_filter>rti/*</deny_topic_name_filter>
+                        <datareader_qos 
+                            base_name="HelloWorldTopicQueryLibrary::HelloWorldTopicQueryProfile"/>  
+                    </input>
+                    <output>                        
+                        <creation_mode>ON_DOMAIN_AND_ROUTE_MATCH</creation_mode>
+                        <allow_topic_name_filter>Example HelloWorldTopicQuery</allow_topic_name_filter>
+                        <!-- Exclude monitoring, administration and logging topics -->
+                        <deny_topic_name_filter>rti/*</deny_topic_name_filter>
+                        <datawriter_qos 
+                            base_name="HelloWorldTopicQueryLibrary::HelloWorldTopicQueryProfile"/>
+                    </output>
+                </auto_topic_route>
+            </session>
+
+        </domain_route>
+    </routing_service>
+    
+    <routing_service name="HelloWorldTopicQueryWithFilterPropagation">
+
+        <annotation>
+            <documentation>
+                Routes samples from domain 0 to domain 1 for the
+                Example HelloWorldTopicQuery topic and propagating the user
+                DataReader filters.
+            </documentation>
+        </annotation>
+        
+        <administration>
+            <domain_id>0</domain_id>
+        </administration>
+        
+        <monitoring>
+            <domain_id>0</domain_id>
+        </monitoring>
+
+        <domain_route name="DomainRoute">
+
+            <participant name="1">
+                <domain_id>0</domain_id>
+            </participant>
+
+            <participant name="2">
+                <domain_id>1</domain_id>
+            </participant>
+
+            <session name="Session">
+                <auto_topic_route name="HelloWorldTopicQueryAutoRoute">
+                    <!-- enable TQ propagation -->
+                    <topic_query_proxy>
+                        <enabled>true</enabled>		    
+                    </topic_query_proxy>
+                    <!-- enable filter propagation -->
+                    <filter_propagation>
+                        <enabled>true</enabled>
+                    </filter_propagation>
+                    <input participant="1">
+                        <creation_mode>ON_DOMAIN_AND_ROUTE_MATCH</creation_mode>
+                        <allow_topic_name_filter>
+                            Example HelloWorldTopicQuery
+                        </allow_topic_name_filter>
+                        <!-- Exclude monitoring, administration and logging topics -->
+                        <deny_topic_name_filter>rti/*</deny_topic_name_filter>
+                        <datareader_qos 
+                            base_name="HelloWorldTopicQueryLibrary::HelloWorldTopicQueryProfile"/>  
+                    </input>
+                    <output>                        
+                        <creation_mode>ON_DOMAIN_AND_ROUTE_MATCH</creation_mode>
+                        <allow_topic_name_filter>Example HelloWorldTopicQuery</allow_topic_name_filter>
+                        <!-- Exclude monitoring, administration and logging topics -->
+                        <deny_topic_name_filter>rti/*</deny_topic_name_filter>
+                        <datawriter_qos 
+                            base_name="HelloWorldTopicQueryLibrary::HelloWorldTopicQueryProfile"/>
+                    </output>
+                </auto_topic_route>
+            </session>
+
+        </domain_route>
+    </routing_service>
+</dds>
