@@ -1,0 +1,16 @@
+*.a
+*.ali
+.clang*
+*.d
+/.gen
+gpsauto.cgpr
+*.lexch
+*-loc.xml
+messages.txt
+*.o
+*.so
+*.stderr
+*.stdout
+*.txt
+*.class
+*.jar
