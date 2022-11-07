@@ -1,0 +1,41 @@
+with "dds.gpr";
+with "dds-c.gpr";
+library project DDS.C.Routing is
+   for externally_built use "true";
+
+   for Library_Dir use external ("NDDSHOME") & "/lib/x64Linux4gcc7.3.0/";
+   for Library_Name use "rtiroutingservice";
+
+   --  case DDS.USE_DIST_LIBRARIES is
+   --     when "True" =>
+   --        for Library_Dir use  NDDSHOME & "/lib/" & DDS.Architecture;
+   --     when "False" =>
+   --        for Library_Dir use  NDDSHOME & "/lib/" & DDS.Target;
+   --  end case;
+   --
+
+   case DDS.Library_Kind is
+      when "relocatable" =>
+         for Library_Kind use  "dynamic";
+         for Library_Name use Project'Library_Name & DDS.Dynamic_Lib_Sufix;
+      when "static" =>
+         for Library_Kind use  "static";
+         for Library_Name use Project'Library_Name & DDS.Static_Lib_Sufix;
+   end case;
+
+   case DDS.Build  is
+      when "debug" =>
+         for Library_Name use Project'Library_Name & Debug_Lib_Sufix;
+      when "release" =>
+         for Library_Name use Project'Library_Name & Release_Lib_Sufix;
+   end case;
+
+   for Library_Kind use DDS.Library_Kind;
+
+   for Externally_Built use "True";
+
+   package Install is
+      for Active use "False";
+   end Install;
+
+end DDS.C.Routing;

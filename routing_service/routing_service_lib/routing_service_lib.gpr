@@ -1,17 +1,16 @@
-with "dds-c.gpr";
 with "dds.gpr";
-
-library project Routing_Service_Lib is
+with "dds-c-routing.gpr";
+project Routing_Service_Lib is
 
    for Languages use ("C");
-   for Library_Name use "Routing_Service_Lib";
    for Source_Dirs use ("src/**");
    for Object_Dir use ".obj";
-   for Library_Dir use "lib";
-   for Library_Kind use "dynamic";
+   for exec_Dir use ".";
+   for Main use ("RunRoutingService.c");
+
+   for Source_Files use ("RunRoutingService.c", "shm_area.c");
 
    package Compiler renames Dds.Compiler;
-   for Source_Files use ("RunRoutingService.c", "shm_area.c");
 
 end Routing_Service_Lib;
 
