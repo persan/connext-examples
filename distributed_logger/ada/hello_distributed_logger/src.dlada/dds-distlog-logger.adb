@@ -1,17 +1,17 @@
 pragma Ada_2012;
-with RTIDDS.Low_Level.rti_dl_rti_dl_c_h;
-with Interfaces.c;
+with Ada.Unchecked_Conversion;
+with Interfaces.C;
 package body dds.distlog.Logger is
    use RTIDDS.Low_Level.rti_dl_rti_dl_c_h;
    use Interfaces.c;
-
+   pragma Warnings (Off, "reference to obsolescent component*");
    -----------------
    -- getInstance --
    -----------------
    instance : aliased ref;
    function getInstance return ref_access is
    begin
-      return instance'access;
+      return instance'Access;
    end getInstance;
 
    ----------------------
@@ -19,9 +19,8 @@ package body dds.distlog.Logger is
    ----------------------
 
    procedure set_Filter_Level (self : access ref; newLevel : DDS.Long) is
-      ret : unsigned;
    begin
-      ret := RTI_DL_DistLogger_setFilterLevel (self.impl, int(newLevel));
+      Ret_Code_To_Exception (RTI_DL_DistLogger_SetFilterLevel (Self.Impl, Int (NewLevel)));
    end set_Filter_Level;
 
    -----------------
@@ -40,19 +39,21 @@ package body dds.distlog.Logger is
    ----------------------
    -- set_Print_Format --
    ----------------------
-
-   procedure set_Print_Format
+   function As_Unsigned is new Ada.Unchecked_Conversion (RTIDDS.Config.LogPrintFormat, Unsigned);
+   procedure Set_Print_Format
      (self : access ref; logPrintFormat : RTIDDS.Config.LogPrintFormat)
    is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "set_Print_Format unimplemented");
-      raise Program_Error with "Unimplemented procedure set_Print_Format";
-   end set_Print_Format;
+      Ret_Code_To_Exception (Unsigned (RTI_DL_DistLogger_SetRTILoggerPrintFormat
+                             (Self => Self.Impl,
+                              LogPrintFormat => As_Unsigned (LogPrintFormat))));
+   end Set_Print_Format;
 
    -------------------------------
    -- set_Verbosity_By_Category --
    -------------------------------
+      function As_Unsigned is new Ada.Unchecked_Conversion (RTIDDS.Config.LogVerbosity, Unsigned);
+      function As_LogCategory is new Ada.Unchecked_Conversion (RTIDDS.Config.LogCategory, NDDS_Config_LogCategory);
 
    procedure set_Verbosity_By_Category
      (self      : access ref;
@@ -60,38 +61,48 @@ package body dds.distlog.Logger is
       verbosity : RTIDDS.Config.LogVerbosity)
    is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "set_Verbosity_By_Category unimplemented");
-      raise Program_Error
-        with "Unimplemented procedure set_Verbosity_By_Category";
+      RTI_DL_DistLogger_SetRTILoggerVerbosityByCategory
+                             (Self => Self.Impl,
+                              Category => As_LogCategory (category),
+                              Verbosity => As_Unsigned (Verbosity));
    end set_Verbosity_By_Category;
 
    ---------------------------------
    -- logMessageWithLevelCategory --
    ---------------------------------
 
-   procedure logMessageWithLevelCategory
-     (self     : access Ref; logLevel : DDS.integer; message : DDS.String;
+   procedure log
+     (self     : access Ref;
+      logLevel : Log_Level;
+      message  : DDS.String;
       category : DDS.String)
    is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "logMessageWithLevelCategory unimplemented");
-      raise Program_Error
-        with "Unimplemented procedure logMessageWithLevelCategory";
-   end logMessageWithLevelCategory;
+      RTI_DL_DistLogger_LogMessageWithLevelCategory (Self.Impl,
+                                                     Int (LogLevel),
+                                                     Message.Data,
+                                                     Category.Data);
+   end Log;
 
-   --------------------------
-   -- logMessageWithParams --
-   --------------------------
-
-   procedure logMessageWithParams (self : access Ref; params : MessageParams)
+   procedure Log
+     (Self     : access Ref;
+      logLevel : Log_Level;
+      Message  : Standard.String;
+      Category : Standard.String)
    is
+      l_Message  : DDS.String;
+      L_Category : DDS.String;
+
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "logMessageWithParams unimplemented");
-      raise Program_Error with "Unimplemented procedure logMessageWithParams";
-   end logMessageWithParams;
+      Copy (L_Message, Message);
+      Copy (L_Category, Category);
+      Self.Log (LogLevel,
+                L_Message,
+                L_Category);
+
+      Finalize (l_Message);
+      Finalize (L_Category);
+   end Log;
 
    -----------
    -- fatal --
@@ -164,7 +175,6 @@ package body dds.distlog.Logger is
    begin
       RTI_DL_DistLogger_trace (self.impl, message.Data);
    end trace;
-
 
    -----------
    -- fatal --
@@ -267,7 +277,7 @@ package body dds.distlog.Logger is
    ---------
 
    procedure log
-     (self : access Ref; logLevel : DDS.integer; message : DDS.String)
+     (self : access Ref; logLevel : Log_Level; message : DDS.String)
    is
       temp_message : dds.String;
    begin
@@ -280,88 +290,62 @@ package body dds.distlog.Logger is
    -- get_fatal_log_level --
    -------------------------
 
-   function get_fatal_log_level (self : access Ref) return DDS.Long is
+   function get_fatal_log_level (self : access Ref) return Log_Level is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "get_fatal_log_level unimplemented");
-      return
-        raise Program_Error with "Unimplemented function get_fatal_log_level";
+      return Log_Level (RTI_DL_DistLogger_Get_Fatal_Log_Level);
    end get_fatal_log_level;
 
    -------------------------
    -- get_error_log_level --
    -------------------------
 
-   function get_error_log_level (self : access Ref) return DDS.Long is
+   function get_error_log_level (self : access Ref) return Log_Level is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "get_error_log_level unimplemented");
-      return
-        raise Program_Error with "Unimplemented function get_error_log_level";
+      return Log_Level (RTI_DL_DistLogger_Get_Error_Log_Level);
    end get_error_log_level;
 
    ---------------------------
    -- get_warning_log_level --
    ---------------------------
 
-   function get_warning_log_level (self : access Ref) return DDS.Long is
+   function get_warning_log_level (self : access Ref) return Log_Level is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "get_warning_log_level unimplemented");
-      return
-        raise Program_Error
-          with "Unimplemented function get_warning_log_level";
+      return Log_Level (RTI_DL_DistLogger_Get_Warning_Log_Level);
    end get_warning_log_level;
 
    --------------------------
    -- get_notice_log_level --
    --------------------------
 
-   function get_notice_log_level (self : access Ref) return DDS.Long is
+   function get_notice_log_level (self : access Ref) return Log_Level is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "get_notice_log_level unimplemented");
-      return
-        raise Program_Error with "Unimplemented function get_notice_log_level";
+      return Log_Level (RTI_DL_DistLogger_Get_Notice_Log_Level);
    end get_notice_log_level;
 
    ------------------------
    -- get_info_log_level --
    ------------------------
 
-   function get_info_log_level (self : access Ref) return DDS.Long is
+   function get_info_log_level (self : access Ref) return Log_Level is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "get_info_log_level unimplemented");
-      return
-        raise Program_Error with "Unimplemented function get_info_log_level";
+      return Log_Level (RTI_DL_DistLogger_Get_info_Log_Level);
    end get_info_log_level;
 
    -------------------------
    -- get_debug_log_level --
    -------------------------
 
-   function get_debug_log_level (self : access Ref) return DDS.Long is
+   function get_debug_log_level (self : access Ref) return Log_Level is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "get_debug_log_level unimplemented");
-      return
-        raise Program_Error with "Unimplemented function get_debug_log_level";
+      return Log_Level (RTI_DL_DistLogger_Get_Debug_Log_Level);
    end get_debug_log_level;
 
    ----------------------
    -- finalizeInstance --
    ----------------------
-
-   function finalizeInstance
-      return RTIDDS.Low_Level.ndds_dds_c_dds_c_infrastructure_h
-     .DDS_ReturnCode_t
-   is
+   procedure Finalize (Self : access Ref) is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "finalizeInstance unimplemented");
-      return
-        raise Program_Error with "Unimplemented function finalizeInstance";
-   end finalizeInstance;
+      Ret_Code_To_Exception (RTI_DL_DistLogger_FinalizeInstance);
+   end;
 
-end dds.distlog.Logger;
+end Dds.Distlog.Logger;

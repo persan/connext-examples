@@ -1,0 +1,5 @@
+module hello {
+struct HelloWorld {
+    long data;
+};
+};

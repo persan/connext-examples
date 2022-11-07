@@ -4,14 +4,15 @@ with dds.distlog.options;
 package dds.distlog.Logger is
    type ref (<>) is tagged private;
    type ref_access  is access all ref'Class;
-
+   type Log_Level is range 0 .. 258;
    function getInstance return ref_access;
-
+   procedure Finalize (Self : access Ref);
    procedure set_Filter_Level (self     : access ref;
                                newLevel : DDS.Long);
 
    procedure set_Options (self     : access ref;
                           options  : dds.distlog.options.ref);
+   --  Note options must be set before any call is done to the logger.
 
    procedure set_Print_Format (self           : access ref;
                                logPrintFormat : RTIDDS.Config.LogPrintFormat);
@@ -21,59 +22,52 @@ package dds.distlog.Logger is
       category  : RTIDDS.Config.LogCategory;
       verbosity : RTIDDS.Config.LogVerbosity);
 
-
-   type MessageParams is record
-      log_level : aliased DDS.integer;
-      message   : DDS.String;
-      category  : DDS.String;
-      timestamp : aliased DDS.Time_t;
-   end record with Convention => C_Pass_By_Copy;
-
-
-   PROCEDURE logMessageWithLevelCategory
+   procedure Log
      (self     : access Ref;
-      logLevel : DDS.integer;
+      logLevel : Log_Level;
       message  : DDS.String;
       category : DDS.String);
 
-   PROCEDURE logMessageWithParams (self : access Ref; params : MessageParams);
-
-   PROCEDURE fatal (self : access Ref; message : DDS.String);
-   PROCEDURE severe (self : access Ref; message : DDS.String);
-   PROCEDURE error (self : access Ref; message : DDS.String);
-   PROCEDURE warning (self : access Ref; message : DDS.String);
-   PROCEDURE notice (self : access Ref; message : DDS.String);
-   PROCEDURE info (self : access Ref; message : DDS.String);
-   PROCEDURE debug (self : access Ref; message : DDS.String);
-   PROCEDURE trace (self : access Ref; message : DDS.String);
-
-   PROCEDURE fatal (self : access Ref; message : Standard.String);
-   PROCEDURE severe (self : access Ref; message : Standard.String);
-   PROCEDURE error (self : access Ref; message : Standard.String);
-   PROCEDURE warning (self : access Ref; message : Standard.String);
-   PROCEDURE notice (self : access Ref; message : Standard.String);
-   PROCEDURE info (self : access Ref; message : Standard.String);
-   PROCEDURE debug (self : access Ref; message : Standard.String);
-   PROCEDURE trace (self : access Ref; message : Standard.String);
-
-
-   PROCEDURE log
+   procedure Log
      (self     : access Ref;
-      logLevel : DDS.integer;
+      logLevel : Log_Level;
+      Message  : Standard.String;
+      Category : Standard.String);
+
+   procedure fatal (self : access Ref; message : DDS.String);
+   procedure severe (self : access Ref; message : DDS.String);
+   procedure error (self : access Ref; message : DDS.String);
+   procedure warning (self : access Ref; message : DDS.String);
+   procedure notice (self : access Ref; message : DDS.String);
+   procedure info (self : access Ref; message : DDS.String);
+   procedure debug (self : access Ref; message : DDS.String);
+   procedure trace (self : access Ref; message : DDS.String);
+
+   procedure fatal (self : access Ref; message : Standard.String);
+   procedure severe (self : access Ref; message : Standard.String);
+   procedure error (self : access Ref; message : Standard.String);
+   procedure warning (self : access Ref; message : Standard.String);
+   procedure notice (self : access Ref; message : Standard.String);
+   procedure info (self : access Ref; message : Standard.String);
+   procedure debug (self : access Ref; message : Standard.String);
+   procedure trace (self : access Ref; message : Standard.String);
+
+   procedure log
+     (self     : access Ref;
+      logLevel : Log_Level;
       message  : DDS.String);
 
+   function get_fatal_log_level (self : access Ref) return Log_Level;
 
-   FUNCTION get_fatal_log_level (self : access Ref)return DDS.Long;
+   function get_error_log_level (self : access Ref) return Log_Level;
 
-   FUNCTION get_error_log_level (self : access Ref)return DDS.Long;
+   function get_warning_log_level (self : access Ref) return Log_Level;
 
-   FUNCTION get_warning_log_level (self : access Ref)return DDS.Long;
+   function get_notice_log_level (self : access Ref) return Log_Level;
 
-   FUNCTION get_notice_log_level (self : access Ref)return DDS.Long;
+   function get_info_log_level (self : access Ref) return Log_Level;
 
-   FUNCTION get_info_log_level (self : access Ref)return DDS.Long;
-
-   FUNCTION get_debug_log_level (self : access Ref)return DDS.Long;
+   function get_debug_log_level (self : access Ref) return Log_Level;
 
 private
 
@@ -81,6 +75,5 @@ private
    type ref is tagged record
       impl : RTI_DL_DistLogger_Access;
    end record;
-   FUNCTION finalizeInstance return RTIDDS.Low_Level.ndds_dds_c_dds_c_infrastructure_h.DDS_ReturnCode_t;
 
 end dds.distlog.Logger;

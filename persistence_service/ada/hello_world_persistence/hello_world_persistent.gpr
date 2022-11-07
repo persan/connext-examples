@@ -1,0 +1,32 @@
+with "dds.gpr";
+with "dds-ada.gpr";
+
+project Hello_World_Persistent is
+
+   for Source_Dirs use ("src/**", ".");
+   for Object_Dir use ".obj";
+   for Exec_Dir use "bin";
+   for Main use ("helloworld_publisher.adb", "helloworld_subscriber.adb");
+   for Languages use ("Ada", "C", "Makefile", "Text", "Xml");
+
+   package Builder is
+   end Builder;
+
+   package Compiler is
+      for Driver ("idl") use "";
+      for Driver ("xml") use "";
+      for Driver ("Text") use "";
+      for Driver ("makefile") use "";
+      for Switches ("C") use Dds.Compiler'Default_Switches ("C");
+   end Compiler;
+
+   package Naming is
+      for Body_Suffix ("xml") use ".xml";
+      for Body_Suffix ("idl") use ".idl";
+      for Body_Suffix ("Text") use ".txt";
+      for Body_Suffix ("makefile") use ".mk";
+      for Implementation_Exceptions ("makefile") use ("Makefile");
+   end Naming;
+
+end Hello_World_Persistent;
+

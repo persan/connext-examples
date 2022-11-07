@@ -1,9 +1,9 @@
 with Ada.Command_Line;
 with Ada.Exceptions;
 with Ada.Text_IO; use Ada.Text_IO;
-
 with dds.distlog.Logger;
 with dds.distlog.options;
+with DDS.DomainParticipantFactory;
 
 procedure hello is
    procedure hello_main ( domainId : DDS.DomainId_T)is 
@@ -12,7 +12,7 @@ procedure hello is
       
    begin
       begin
-         --  Set Up ---------------------------------------------------------
+         --  Set Up 
          --  
          put_Line ("RTI Distributed Logger Example Application");
          put_Line ("Copyright 2011 Real-Time Innovations, Inc.");
@@ -60,36 +60,22 @@ procedure hello is
             Put_Line (Ada.exceptions.Exception_Information (e));
       end;
 
-      --  Clean Up -------------------------------------------------------
+      --  Clean Up
+      --
       Put_Line ("Exiting...");
-      
-      --  
-      --  if (dl != NULL) {
-      --      /* If we don't finalize it, it will forward all the log messages */
-      --      retcode = RTI_DL_DistLogger_finalizeInstance();
-      --      if (retcode != DDS_RETCODE_OK) {
-      --          printf(
-      --                  "Error: Unable to finalize RTI Distributed Logger instance");
-      --          main_result = 1;
-      --      }
-      --      /*Remember to finalize the factory once your DDS program is finished */
-      --      DDS_DomainParticipantFactory_finalize_instance();
-      --  
-      --  }
-      
+      Dl.Finalize;      
+      DDS.DomainParticipantFactory.Get_Instance.Finalize_Instance;      
    end hello_main;
+   
    domainId  :  DDS.DomainId_T := 0;
 begin
    if Ada.Command_Line.Argument_Count > 0 then
       domainId := DDS.DomainId_T'Value (Ada.Command_Line.Argument (1));
    end if;
-
-   --  /* Uncomment this to turn on additional logging
-   --   *     NDDS_Config_Logger_set_verbosity_by_category(
-   --   *             NDDS_Config_Logger_get_instance(),
-   --   *                     NDDS_CONFIG_LOG_CATEGORY_API, 
-   --   *                             NDDS_CONFIG_LOG_VERBOSITY_STATUS_ALL);
-   --   *                                 */
-   --  
+   
+   --  Uncomment this to turn on additional logging
+   --  RTIDDS.Config.Logger.Get_Instance.Set_Verbosity (RTIDDS.Config.Category_API, 
+   --                                                  RTIDDS.Config.VERBOSITY_ALL);
+   
    hello_main (domainId);
 end hello;

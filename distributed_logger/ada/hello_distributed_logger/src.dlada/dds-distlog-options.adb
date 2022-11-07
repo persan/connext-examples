@@ -8,15 +8,14 @@ package body dds.distlog.options is
    ----------------------------
 
    function get_Domain_Participant
-     (self : ref) return DDS.DomainParticipant.ref_access
+     (Self : Ref) return DDS.DomainParticipant.Ref_Access
    is
+      Temp : access RTIDDS.Low_Level.ndds_dds_c_dds_c_infrastructure_h.DDS_DomainParticipantImpl;
    begin
-
-      pragma Compile_Time_Warning
-        (Standard.True, "get_Domain_Participant unimplemented");
-      return
-        raise Program_Error
-          with "Unimplemented function get_Domain_Participant";
+      return Ret : DDS.DomainParticipant.Ref_Access do
+         Temp := RTI_DL_Options_GetDomainParticipant (Self.Impl);
+         Ret := null;
+      end return;
    end get_Domain_Participant;
 
    ----------------------------
@@ -24,9 +23,11 @@ package body dds.distlog.options is
    ----------------------------
 
    procedure set_Domain_Participant
-     (self : ref; domainParticipant : DDS.DomainParticipant.ref_access)
+     (self              : ref;
+      domainParticipant : DDS.DomainParticipant.ref_access)
    is
    begin
+
       pragma Compile_Time_Warning
         (Standard.True, "set_Domain_Participant unimplemented");
       raise Program_Error
@@ -269,7 +270,7 @@ package body dds.distlog.options is
    --------------------------
 
    procedure get_Application_Kind
-     (self : ref; applicationKind : out Standard.String)
+     (self : ref; applicationKind : out DDS.String)
    is
    begin
       pragma Compile_Time_Warning

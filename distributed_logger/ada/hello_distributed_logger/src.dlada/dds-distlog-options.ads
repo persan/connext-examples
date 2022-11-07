@@ -40,7 +40,7 @@ package dds.distlog.options is
 
    procedure set_Application_Kind (self : ref; applicationKind : DDS.String);
    procedure set_Application_Kind (self : ref; applicationKind : Standard.String);
-   procedure get_Application_Kind (self : ref; applicationKind : out Standard.String);
+   procedure get_Application_Kind (self : ref; applicationKind : out DDS.String);
    function get_Application_Kind (self : ref) return Standard.String;
 
    procedure set_Echo_To_Stdout (self : ref; echoToStdout : Boolean);

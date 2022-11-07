@@ -1,3 +1,3 @@
-package dds.distlog is
+package DDS.distlog is
 
-end dds.distlog;
+end DDS.distlog;
