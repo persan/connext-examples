@@ -1,0 +1,26 @@
+with "dds.gpr";
+with "dds-cpp2.gpr";
+
+project Hello_World_Request_Reply is
+
+   for Languages use ("C++");
+   for Object_Dir use ".obj";
+   for Exec_Dir use "bin";
+   for Source_Dirs use ("src/**");
+   for Main use ("PrimeNumberReplier.cxx", "PrimeNumberRequester.cxx");
+
+   package Compiler is
+      for Switches ("C++") use ("-m64", "-Wall", "-std=c++14", "-DRTI_UNIX", "-DRTI_LINUX", "-DRTI_64BIT");
+   end Compiler;
+
+   package Naming is
+      for Spec_Suffix ("c++") use ".h";
+      for Body_Suffix ("c++") use ".cxx";
+   end Naming;
+
+   package Linker is
+      for Switches ("c++") use ("-L" & DDS.NDDSHOME & "/lib/x86_64-pc-linux-gnu/");
+   end Linker;
+
+end Hello_World_Request_Reply;
+
