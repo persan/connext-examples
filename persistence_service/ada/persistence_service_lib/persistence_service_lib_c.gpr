@@ -1,0 +1,11 @@
+with "dds-c-persistence.gpr";
+with "dds.gpr";
+project Persistence_Service_Lib_c is
+    for languages use ("C");
+    for main use ("RunPersistenceService.c");
+   for Source_Dirs use ("src");
+   for Object_Dir use ".obj";
+   for Exec_Dir use "bin";
+package compiler renames dds.compiler;
+end Persistence_Service_Lib_c;
+

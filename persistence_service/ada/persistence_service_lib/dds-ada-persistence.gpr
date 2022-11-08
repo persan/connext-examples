@@ -1,0 +1,57 @@
+with "dds.gpr";
+with "dds-ada.gpr";
+with "dds-c-persistence.gpr";
+
+library project DDS.Ada.persistence is
+
+   type Build_Type is
+      ("release", "debug");
+   type Library_Kind_Type is
+      ("static", "relocatable");
+   for Library_Dir use "lib";
+   for Library_Name use "rtidlada";
+   for Source_Dirs use ("src.dlada/**");
+   for Object_Dir use ".obj/" & project'Name & "/" & Dds.Library_Kind & "/" & Dds.Build;
+   RTIDDS_LIBRARY_TYPE : Library_Kind_Type := external ("RTIDDS_LIBRARY_TYPE");
+   RTIDDS_BUILD : Build_Type := external ("RTIDDS_BUILD");
+
+   case RTIDDS_LIBRARY_TYPE is
+
+      when "static" =>
+
+         case RTIDDS_BUILD is
+
+            when "release" =>
+               for Library_Kind use "static";
+               for Library_Name use project'Library_Name & Dds.Static_Lib_Sufix;
+               for Library_Name use project'Library_Name & Dds.Release_Lib_Sufix;
+
+            when "debug" =>
+               for Library_Kind use "static";
+               for Library_Name use project'Library_Name & Dds.Static_Lib_Sufix;
+               for Library_Name use project'Library_Name & Dds.Debug_Lib_Sufix;
+         end case;
+
+      when "relocatable" =>
+
+         case RTIDDS_BUILD is
+
+            when "release" =>
+               for Library_Kind use "dynamic";
+               for Library_Name use project'Library_Name & Dds.Dynamic_Lib_Sufix;
+               for Library_Name use project'Library_Name & Dds.Release_Lib_Sufix;
+
+            when "debug" =>
+               for Library_Kind use "dynamic";
+               for Library_Name use project'Library_Name & Dds.Dynamic_Lib_Sufix;
+               for Library_Name use project'Library_Name & Dds.Debug_Lib_Sufix;
+         end case;
+   end case;
+
+   package Compiler is
+      for Switches ("Ada") use ("-gnatwa");
+      for Switches ("ada") use ("-O2", "-gnatwa", "-gnatyabBcdfhiklnOprtux");
+   end Compiler;
+
+end DDS.Ada.persistence;
+

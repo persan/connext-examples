@@ -1,0 +1,75 @@
+procedure Persistence_Service_Main is
+   Wait_Period : Duration := 4.0;
+begin
+   --      struct RTI_PersistenceServiceProperty property = RTI_PersistenceServiceProperty_INITIALIZER;
+   --      struct RTI_PersistenceService * persistence_service = NULL;
+   --      int count = 3000;
+
+
+   --      property.cfg_name = "default";
+   --      property.cfg_strings = MY_STRINGS;
+   --      property.cfg_strings_count = MY_STRINGS_SIZE;
+
+   --      /* To increase verbosity use some of the next constants in property.service_verbosity
+   --         RTI_PERSISTENCE_SERVICE_LOG_VERBOSITY_INFO
+   --         RTI_PERSISTENCE_SERVICE_LOG_VERBOSITY_WARNINGS
+   --         RTI_PERSISTENCE_SERVICE_LOG_VERBOSITY_EXCEPTIONS
+   --       */
+   --      property.service_verbosity = RTI_PERSISTENCE_SERVICE_LOG_VERBOSITY_SILENT;
+   --      property.thread_stack_size = 256 * 1024;
+   --
+   --      /* instanciate peristence service */
+   --      persistence_service = RTI_PersistenceService_new(&property);
+   --      if(persistence_service == NULL) {
+   --          perror ("Error: !RTI_PersistenceService_new: NULL\n");
+   --          return -1;
+   --      }
+   --
+   --      printf("PersistenceService successfully created ...\n");
+   --      /* start routing service */
+   --      if(!RTI_PersistenceService_start(persistence_service)) {
+   --
+   --          perror ("Error: !RTI_PersistenceService_start: False\n");
+   --
+   --          RTI_PersistenceService_delete(persistence_service);
+   --
+   --          return -1;
+   --      }
+   --
+   --      printf("PersistenceService running ...\n");
+   --      /* wait to be stopped */
+   --      while(count-- >= 0) {
+   --          printf(".");
+   --          NDDS_Utility_sleep(&wait_period);
+   --      }
+   --
+   --      printf("\nPersistenceService going to be stopped ...\n");
+   --      if(!RTI_PersistenceService_stop(persistence_service)) {
+   --
+   --          perror ("Error: !RTI_PersistenceService_stop: False\n");
+   --      }
+   --      else {
+   --          printf("PersistenceService stopped\n");
+   --      }
+   --
+   --      RTI_PersistenceService_delete(persistence_service);
+   --      return 0;
+   --  }
+   --
+   --  #if !(defined(RTI_VXWORKS) && !defined(__RTP__)) && !defined(RTI_PSOS)
+   --  int main(int argc, char *argv[])
+   --  {
+   --      char * cfg_file = NULL;
+   --      if (argc >= 2) {
+   --          cfg_file = argv[1];
+   --      }
+   --
+   --      /* Uncomment this to turn on additional logging
+   --      NDDS_Config_Logger_set_verbosity_by_category(
+   --          NDDS_Config_Logger_get_instance(),
+   --          NDDS_CONFIG_LOG_CATEGORY_API,
+   --          NDDS_CONFIG_LOG_VERBOSITY_STATUS_ALL);
+   --      */
+   --
+   --      return persistence_service_main(cfg_file);
+}end Persistence_Service_Main;
