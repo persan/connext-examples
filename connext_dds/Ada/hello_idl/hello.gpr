@@ -1,0 +1,69 @@
+with "dds.gpr";
+with "dds-ada.gpr";
+with "dds-c.gpr";
+
+project Hello is
+
+   type Boolean is ("False", "True");
+   Code_Gen : Boolean := external ("CODE_GEN", "False");
+
+   for Source_Dirs use (".");
+   for Languages use ("idl");
+   for Exec_Dir use "bin/";
+
+   case Code_Gen is
+      when "False" =>
+         for Source_Dirs use project'Source_Dirs & ("src/**");
+         for Main use ("hello-helloworld_publisher.adb",
+                       "hello-helloworld_subscriber.adb");
+         for Languages use  project'Languages & ("Ada", "C");
+         for Object_Dir use ".obj/" & DDS.Library_Kind & "/" & Dds.Build;
+         for Object_Generated ("Idl") use "false";
+      when "True" =>
+         for Object_Dir use "src";
+   end case;
+
+
+   package Binder is
+      for Default_Switches ("ada") use ("-E");
+   end Binder;
+
+   package Compiler is
+      case Code_Gen is
+         when "False" => for Driver ("idl") use "";
+         when "True"  => for Driver ("idl") use "rtiddsgen";
+      end case;
+      for Driver ("idl") use "rtiddsgen";
+      for Default_Switches ("idl") use
+        ("-language", "Ada",
+         "-replace",
+         "-example", DDS.Target,
+         "-d", ".");
+
+      for Include_Switches ("Idl") use ("-I");
+      for Default_Switches ("ada") use
+        ("-gnatf",
+         "-gnatQ",
+         "-gnatq",
+         "-gnatyM20483aAbcefhiklnprstx",
+         "-gnatwa", "-gnato",
+         "-fstack-check");
+
+      for Default_Switches ("c") use Dds.Compiler'Default_Switches ("c");
+
+      case Dds.Build is
+         when "debug" =>
+            for Default_Switches ("Ada") use Compiler'Default_Switches ("Ada") & ("-O0");
+            for Default_Switches ("C") use Compiler'Default_Switches ("C") & ("-O0");
+         when "release" =>
+            for Default_Switches ("Ada") use Compiler'Default_Switches ("Ada") & ("-O2");
+            for Default_Switches ("C") use Compiler'Default_Switches ("C") & ("-O2");
+      end case;
+   end Compiler;
+
+   package Naming is
+      for Implementation_Suffix ("idl") use ".idl";
+   end Naming;
+
+
+end Hello;

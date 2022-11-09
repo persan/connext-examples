@@ -1,0 +1,23 @@
+with "dds-cpp2.gpr";
+with "dds.gpr";
+
+project Dil_Stacking is
+
+   for Languages use ("C++");
+   for Source_Dirs use (".", "src/**");
+   for Object_Dir use ".obj";
+
+   package Compiler is
+      for Switches ("C++") use Dds.Compiler'Default_Switches ("C++");
+      for Switches ("c++") use ("-g", "-DRTI_64BIT", "-DRTI_UNIX", "-O2");
+   end Compiler;
+
+   package Naming is
+      for Spec_Suffix ("c++") use ".h";
+      for Body_Suffix ("c++") use ".cxx";
+   end Naming;
+
+   for Main use ("DilStacking_publisher.cxx", "DilStacking_subscriber.cxx");
+
+end Dil_Stacking;
+
